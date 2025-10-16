@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "trackport",
-    "slug": "trackport",
+    "name": "temp_web",
+    "slug": "temp_web",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
