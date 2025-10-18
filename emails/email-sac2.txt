@@ -1,0 +1,62 @@
+Asunto: 📞 Bienvenido al Equipo SAC - TrackPort (SAC 2)
+
+Estimado/a Especialista en Servicio al Cliente,
+
+¡Bienvenido al equipo SAC de TrackPort! Tu cuenta está lista para brindar excelente servicio.
+
+🔐 TUS CREDENCIALES:
+• URL: https://www.track-port.com
+• Email: sac2@track-port.com
+• Contraseña temporal: 123456
+• Rol: Especialista SAC
+
+📞 TU ALCANCE DE SERVICIO:
+✅ Atención multicanal - Email, chat, teléfono
+✅ Gestión de cuentas - Actualizar información de clientes
+✅ Validación documental - Revisar y aprobar documentos
+✅ Soporte técnico - Ayudar con problemas de acceso
+✅ Seguimiento proactivo - Contactar clientes sobre actualizaciones
+✅ Reportes de satisfacción - Medir calidad del servicio
+✅ Capacitación a usuarios - Enseñar uso de la plataforma
+
+🎯 ENFOQUE DE EXCELENCIA:
+1. Respuesta rápida - Atender consultas en <2 horas
+2. Resolución efectiva - Solucionar problemas correctamente
+3. Comunicación clara - Explicar procesos de manera simple
+4. Seguimiento proactivo - Contactar antes de que pregunten
+5. Documentación precisa - Registrar todas las interacciones
+6. Mejora continua - Identificar oportunidades de optimización
+
+📱 METODOLOGÍA DE TRABAJO:
+1. Preparación diaria - Revisar casos pendientes y novedades
+2. Gestión de prioridades - Urgentes > Importantes > Rutinarios
+3. Atención personalizada - Adaptar comunicación al cliente
+4. Validación eficiente - Revisar documentos con criterio
+5. Seguimiento sistemático - Cerrar el loop de comunicación
+6. Reporte de calidad - Medir y mejorar performance
+
+🔧 STACK DE HERRAMIENTAS:
+• Panel SAC: Dashboard especializado para servicio
+• CRM de Clientes: Historial completo de interacciones
+• Validador Inteligente: Herramientas de revisión documental
+• Centro de Comunicaciones: Integración email/chat/SMS
+• Analytics de Servicio: Métricas de satisfacción y performance
+
+📊 KPIs DE SERVICIO:
+• Tiempo promedio de respuesta
+• Tasa de resolución en primer contacto
+• Satisfacción del cliente (NPS)
+• Casos escalados vs. resueltos
+• Precisión en validación de documentos
+
+📞 RED DE APOYO:
+• Backup SAC: sac1@track-port.com
+• Escalación técnica: admin@track-port.com
+• Consultas comerciales: Equipo de ventas
+• Issues complejos: Supervisores
+
+¡Sé la voz amigable de TrackPort!
+
+---
+TrackPort Team
+www.track-port.com

@@ -1,0 +1,51 @@
+Asunto: 👑 Bienvenido a TrackPort - Acceso Administrador (Luis Razo)
+
+Estimado Luis,
+
+¡Bienvenido a TrackPort! Tu cuenta de administrador está lista para usar.
+
+🔐 TUS CREDENCIALES:
+• URL: https://www.track-port.com
+• Email: lrazo@track-port.com
+• Contraseña temporal: 123456
+• Rol: Administrador Principal
+
+👑 TUS PERMISOS COMO ADMINISTRADOR:
+✅ Panel administrativo completo - Acceso total al sistema
+✅ Gestión de usuarios - Crear, editar y eliminar cuentas
+✅ Gestión de contenedores - Crear, editar y eliminar contenedores
+✅ Reportes avanzados - Métricas y analytics del sistema
+✅ Configuración del sistema - Parámetros generales
+✅ Gestión de instruction letters - Crear y aprobar documentos
+✅ Administración de pagos - Ver y gestionar todos los pagos
+✅ Soporte a usuarios - Resolver problemas del equipo
+
+🎯 TUS RESPONSABILIDADES:
+1. Supervisar operaciones diarias del sistema
+2. Gestionar el equipo y asignar permisos
+3. Revisar reportes y métricas de performance
+4. Aprobar configuraciones importantes
+5. Soporte técnico al equipo
+
+📱 INSTRUCCIONES DE ACCESO:
+1. Ir a www.track-port.com
+2. Hacer clic en "Iniciar Sesión"
+3. Introducir tu email y contraseña temporal
+4. IMPORTANTE: Cambiar contraseña en el primer login
+5. El sistema te guiará al panel de administrador
+
+🔧 FUNCIONES PRINCIPALES:
+• Dashboard Admin: Vista general de todo el sistema
+• Usuarios: Gestionar cuentas del equipo y clientes
+• Contenedores: Vista completa de todos los envíos
+• Reportes: Analytics y métricas avanzadas
+• Configuración: Parámetros del sistema
+
+📞 SOPORTE:
+Si tienes dudas: admin@track-port.com
+
+¡Gracias por liderar TrackPort!
+
+---
+TrackPort Team
+www.track-port.com

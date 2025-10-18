@@ -1,0 +1,63 @@
+Asunto: 📞 Bienvenido al Equipo SAC - TrackPort (SAC 1)
+
+Estimado/a Agente de Servicio al Cliente,
+
+Tu cuenta especializada en atención al cliente está configurada.
+
+🔐 TUS CREDENCIALES:
+• URL: https://www.track-port.com
+• Email: sac1@track-port.com
+• Contraseña temporal: 123456
+• Rol: Servicio al Cliente
+
+📞 TUS RESPONSABILIDADES SAC:
+✅ Atención al cliente - Resolver consultas y problemas
+✅ Validación de documentos - Revisar papeles cargados
+✅ Gestión de cuentas - Administrar información de clientes
+✅ Seguimiento de casos - Dar tracking a solicitudes
+✅ Soporte técnico básico - Ayudar con uso de la plataforma
+✅ Reportes de actividad - Documentar interacciones
+✅ Escalación de problemas - Derivar casos complejos
+
+🎯 TUS PRIORIDADES DIARIAS:
+1. Monitorear bandeja de entrada - Consultas y solicitudes
+2. Atender llamadas/chats - Soporte directo a clientes
+3. Validar documentos - Revisar instruction letters y pagos
+4. Actualizar estados - Informar progreso a clientes
+5. Resolver problemas - Solucionar issues básicos
+6. Reportar actividades - Documentar casos atendidos
+
+📱 TU FLUJO DE TRABAJO:
+1. Login y check-in - Revisar alertas y pendientes
+2. Priorizar casos - Urgentes vs. rutinarios
+3. Atender consultas - Responder emails/chats/llamadas
+4. Validar documentos - Revisar y aprobar papeles
+5. Actualizar sistema - Cambiar estados y notas
+6. Reportar cierre - Documentar resoluciones
+
+🔧 HERRAMIENTAS SAC:
+• Dashboard de Casos: Vista de todas las consultas
+• Directorio de Clientes: Información de contactos
+• Validador de Documentos: Tool para revisar papeles
+• Centro de Comunicaciones: Email/chat integrado
+• Base de Conocimiento: FAQs y procedimientos
+
+📋 TIPOS DE CASOS COMUNES:
+• Consultas sobre estado de contenedores
+• Problemas de acceso a la plataforma
+• Solicitudes de documentos
+• Dudas sobre procesos aduanales
+• Reclamos y quejas
+• Capacitación en uso de TrackPort
+
+📞 PROTOCOLOS DE ESCALACIÓN:
+• Problemas técnicos: admin@track-port.com
+• Consultas comerciales: Equipo de ventas
+• Issues operativos: Customs broker
+• Decisiones complejas: Administradores
+
+¡Gracias por cuidar a nuestros clientes!
+
+---
+TrackPort Team
+www.track-port.com
