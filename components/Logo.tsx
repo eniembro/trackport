@@ -50,7 +50,7 @@ export const Logo: React.FC<LogoProps> = ({
         <View style={[styles.logoContainer, logoSize]}>
           <View style={[styles.svgContainer, logoSize]}>
             <iframe
-              src="/assets/track-port.logo.svg"
+              src="/track-port.logo.svg"
               width={logoSize.width}
               height={logoSize.height}
               style={{ border: 'none' }}

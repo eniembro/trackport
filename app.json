@@ -36,7 +36,12 @@
       "shortName": "TrackPort",
       "lang": "es",
       "scope": "/",
-      "themeColor": "#007AFF"
+      "startUrl": "/",
+      "display": "standalone",
+      "orientation": "portrait",
+      "themeColor": "#007AFF",
+      "backgroundColor": "#ffffff",
+      "description": "Sistema de Gestión de Contenedores y Trámites Aduanales"
     },
     "scheme": "trackport",
     "plugins": [
