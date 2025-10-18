@@ -44,3 +44,4 @@ coverage/
 # Build outputs
 build/
 web-build/
+.vercel
