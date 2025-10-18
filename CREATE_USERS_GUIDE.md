@@ -5,10 +5,14 @@
 
 | Email | Contraseña | Rol | Descripción |
 |-------|------------|-----|-------------|
-| `lrazo@track-port.com` | `123456` | `main_admin` | Administrador principal |
-| `fanny@track-port.com` | `123456` | `main_admin` | Administrador principal |
-| `admin@track-port.com` | `PNegras8%` | `main_admin` | Webmaster (contraseña permanente) |
-| `stark@track-port.com` | `123456` | `sales` | Usuario de ventas |
+| `lrazo@track-port.com` | `123456` | `main_admin` | Administrador |
+| `fanny@track-port.com` | `123456` | `main_admin` | Administrador |
+| `ventas1@track-port.com` | `123456` | `sales` | Ventas 1 |
+| `ventas2@track-port.com` | `123456` | `sales` | Ventas 2 |
+| `sac1@track-port.com` | `123456` | `customer_service` | Atención al Cliente 1 |
+| `sac2@track-port.com` | `123456` | `customer_service` | Atención al Cliente 2 |
+| `aduana_lzo@track-port.com` | `123456` | `customs_broker` | Agente Aduanal |
+| `admin@track-port.com` | `123456` | `main_admin` | Administrador Principal |
 
 ---
 
@@ -34,37 +38,22 @@ Para cada usuario en la tabla anterior:
 
 ```sql
 -- Configurar roles para usuarios TrackPort
-UPDATE auth.users 
-SET raw_user_meta_data = jsonb_set(
-    COALESCE(raw_user_meta_data, '{}'::jsonb),
-    '{role}',
-    '"main_admin"'
-)
-WHERE email = 'lrazo@track-port.com';
 
-UPDATE auth.users 
-SET raw_user_meta_data = jsonb_set(
-    COALESCE(raw_user_meta_data, '{}'::jsonb),
-    '{role}',
-    '"main_admin"'
-)
-WHERE email = 'fanny@track-port.com';
+-- Administradores
+UPDATE auth.users SET raw_user_meta_data = jsonb_set(COALESCE(raw_user_meta_data, '{}'::jsonb), '{role}', '"main_admin"') WHERE email = 'lrazo@track-port.com';
+UPDATE auth.users SET raw_user_meta_data = jsonb_set(COALESCE(raw_user_meta_data, '{}'::jsonb), '{role}', '"main_admin"') WHERE email = 'fanny@track-port.com';
+UPDATE auth.users SET raw_user_meta_data = jsonb_set(COALESCE(raw_user_meta_data, '{}'::jsonb), '{role}', '"main_admin"') WHERE email = 'admin@track-port.com';
 
-UPDATE auth.users 
-SET raw_user_meta_data = jsonb_set(
-    COALESCE(raw_user_meta_data, '{}'::jsonb),
-    '{role}',
-    '"main_admin"'
-)
-WHERE email = 'admin@track-port.com';
+-- Ventas
+UPDATE auth.users SET raw_user_meta_data = jsonb_set(COALESCE(raw_user_meta_data, '{}'::jsonb), '{role}', '"sales"') WHERE email = 'ventas1@track-port.com';
+UPDATE auth.users SET raw_user_meta_data = jsonb_set(COALESCE(raw_user_meta_data, '{}'::jsonb), '{role}', '"sales"') WHERE email = 'ventas2@track-port.com';
 
-UPDATE auth.users 
-SET raw_user_meta_data = jsonb_set(
-    COALESCE(raw_user_meta_data, '{}'::jsonb),
-    '{role}',
-    '"sales"'
-)
-WHERE email = 'stark@track-port.com';
+-- Atención a Cliente
+UPDATE auth.users SET raw_user_meta_data = jsonb_set(COALESCE(raw_user_meta_data, '{}'::jsonb), '{role}', '"customer_service"') WHERE email = 'sac1@track-port.com';
+UPDATE auth.users SET raw_user_meta_data = jsonb_set(COALESCE(raw_user_meta_data, '{}'::jsonb), '{role}', '"customer_service"') WHERE email = 'sac2@track-port.com';
+
+-- Agente Aduanal
+UPDATE auth.users SET raw_user_meta_data = jsonb_set(COALESCE(raw_user_meta_data, '{}'::jsonb), '{role}', '"customs_broker"') WHERE email = 'aduana_lzo@track-port.com';
 ```
 
 3. **Ejecutar el script** (botón "Run")
@@ -80,51 +69,63 @@ SELECT
 FROM auth.users 
 WHERE email IN (
     'lrazo@track-port.com',
-    'fanny@track-port.com', 
-    'admin@track-port.com',
-    'stark@track-port.com'
+    'fanny@track-port.com',
+    'ventas1@track-port.com',
+    'ventas2@track-port.com',
+    'sac1@track-port.com',
+    'sac2@track-port.com',
+    'aduana_lzo@track-port.com',
+    'admin@track-port.com'
 )
-ORDER BY created_at;
+ORDER BY raw_user_meta_data->>'role', email;
 ```
 
 ---
 
 ### 🔐 **CREDENCIALES PARA ENVIAR A USUARIOS**
 
-#### **1. Luis Razo (lrazo@track-port.com)**
+#### **ADMINISTRADORES**
 ```
-Acceso a TrackPort:
-URL: https://www.track-port.com
-Email: lrazo@track-port.com
+Luis Razo - lrazo@track-port.com
+Contraseña temporal: 123456
+Rol: Administrador
+
+Fanny - fanny@track-port.com  
+Contraseña temporal: 123456
+Rol: Administrador
+
+Admin Principal - admin@track-port.com
 Contraseña temporal: 123456
 Rol: Administrador Principal
 ```
 
-#### **2. Fanny (fanny@track-port.com)**
+#### **VENTAS**
 ```
-Acceso a TrackPort:
-URL: https://www.track-port.com
-Email: fanny@track-port.com
-Contraseña temporal: 123456
-Rol: Administrador Principal
-```
-
-#### **3. Admin/Webmaster (admin@track-port.com)**
-```
-Acceso a TrackPort:
-URL: https://www.track-port.com
-Email: admin@track-port.com
-Contraseña: PNegras8%
-Rol: Webmaster (todos los permisos)
-```
-
-#### **4. Stark (stark@track-port.com)**
-```
-Acceso a TrackPort:
-URL: https://www.track-port.com
-Email: stark@track-port.com
+Ventas 1 - ventas1@track-port.com
 Contraseña temporal: 123456
 Rol: Ventas
+
+Ventas 2 - ventas2@track-port.com
+Contraseña temporal: 123456
+Rol: Ventas
+```
+
+#### **ATENCIÓN AL CLIENTE**
+```
+SAC 1 - sac1@track-port.com
+Contraseña temporal: 123456
+Rol: Atención al Cliente
+
+SAC 2 - sac2@track-port.com
+Contraseña temporal: 123456
+Rol: Atención al Cliente
+```
+
+#### **AGENTE ADUANAL**
+```
+Aduana LZO - aduana_lzo@track-port.com
+Contraseña temporal: 123456
+Rol: Agente Aduanal
 ```
 
 ---
@@ -140,7 +141,7 @@ Rol: Ventas
 - ✅ Reportes y métricas
 - ✅ Configuración del sistema
 
-#### **sales (Stark)**
+#### **sales (Ventas1, Ventas2)**
 - ✅ Ver contenedores
 - ✅ Crear instruction letters
 - ✅ Gestión de clientes
@@ -148,6 +149,24 @@ Rol: Ventas
 - ✅ Reportes de ventas
 - ❌ Panel administrativo general
 - ❌ Gestión de usuarios
+
+#### **customer_service (SAC1, SAC2)**
+- ✅ Ver contenedores
+- ✅ Validar documentos
+- ✅ Gestión de cuentas de cliente
+- ✅ Soporte al cliente
+- ✅ Reportes básicos
+- ❌ Crear/eliminar contenedores
+- ❌ Panel administrativo
+
+#### **customs_broker (Aduana_LZO)**
+- ✅ Ver contenedores
+- ✅ Upload documentos aduanales
+- ✅ Gestionar clearance
+- ✅ Seguimiento aduanal
+- ✅ Reportes especializados
+- ❌ Gestión de usuarios
+- ❌ Configuración general
 
 ---
 
@@ -178,7 +197,7 @@ Nota: Las contraseñas temporales deben cambiarse en el primer login.
 
 ### ✅ **CHECKLIST DE VERIFICACIÓN**
 
-- [ ] 4 usuarios creados en Supabase Auth
+- [ ] 8 usuarios creados en Supabase Auth
 - [ ] Roles asignados correctamente 
 - [ ] Verificación SQL ejecutada
 - [ ] Credenciales enviadas a usuarios
