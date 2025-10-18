@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 interface LogoProps {
@@ -45,9 +45,14 @@ export const Logo: React.FC<LogoProps> = ({
   if (variant === 'text-only') {
     return (
       <View style={styles.container}>
-        <Text style={[styles.logoText, { fontSize: textSize }]}>
-          TrackPort
-        </Text>
+        <View style={styles.brandText}>
+          <Text style={[styles.trackText, { fontSize: textSize }]}>
+            Track
+          </Text>
+          <Text style={[styles.portText, { fontSize: textSize }]}>
+            Port
+          </Text>
+        </View>
       </View>
     );
   }
@@ -56,14 +61,24 @@ export const Logo: React.FC<LogoProps> = ({
     <View style={styles.container}>
       {(variant === 'full' || variant === 'icon-only') && (
         <View style={[styles.logoContainer, logoSize]}>
+          {/* Professional TrackPort Logo with Truck Design */}
           <View style={[styles.logoBackground, logoSize]}>
-            {/* Contenedor principal */}
-            <View style={styles.containerIcon}>
-              <Ionicons name="cube-outline" size={logoSize.width * 0.3} color="#93c5fd" />
-            </View>
-            {/* Grúa portuaria */}
-            <View style={styles.craneIcon}>
-              <Ionicons name="construct-outline" size={logoSize.width * 0.2} color="#93c5fd" />
+            {/* Main truck icon representing the professional logo */}
+            <View style={styles.truckContainer}>
+              <Ionicons 
+                name="car-outline" 
+                size={logoSize.width * 0.4} 
+                color="#60a5fa" 
+                style={styles.truckIcon}
+              />
+              {/* Container/warehouse icon overlay */}
+              <View style={styles.containerOverlay}>
+                <Ionicons 
+                  name="business-outline" 
+                  size={logoSize.width * 0.15} 
+                  color="#ffffff" 
+                />
+              </View>
             </View>
           </View>
         </View>
@@ -71,11 +86,16 @@ export const Logo: React.FC<LogoProps> = ({
       
       {showText && variant !== 'icon-only' && (
         <View style={styles.textContainer}>
-          <Text style={[styles.logoText, { fontSize: textSize }]}>
-            TrackPort
-          </Text>
-          <Text style={[styles.subtitle, { fontSize: textSize * 0.4 }]}>
-            Container Tracking & Customs
+          <View style={styles.brandText}>
+            <Text style={[styles.trackText, { fontSize: textSize }]}>
+              Track
+            </Text>
+            <Text style={[styles.portText, { fontSize: textSize }]}>
+              Port
+            </Text>
+          </View>
+          <Text style={[styles.subtitle, { fontSize: textSize * 0.35 }]}>
+            Container Tracking & Customs Management
           </Text>
         </View>
       )}
@@ -91,46 +111,66 @@ const styles = StyleSheet.create({
   logoContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 8,
+    marginBottom: 12,
   },
   logoBackground: {
     backgroundColor: '#1e3a8a',
-    borderRadius: 20,
+    borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.3,
-    shadowRadius: 6,
-    elevation: 8,
+    shadowRadius: 8,
+    elevation: 12,
+    position: 'relative',
+    borderWidth: 3,
+    borderColor: '#2563eb',
+  },
+  truckContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
     position: 'relative',
   },
-  containerIcon: {
-    position: 'absolute',
-    top: '30%',
-    left: '50%',
-    transform: [{ translateX: -15 }, { translateY: -10 }],
+  truckIcon: {
+    transform: [{ scaleX: 1.2 }], // Make truck wider/more professional
   },
-  craneIcon: {
+  containerOverlay: {
     position: 'absolute',
-    top: '15%',
-    left: '20%',
-    transform: [{ translateX: -5 }, { translateY: -5 }],
+    top: '20%',
+    right: '25%',
+    backgroundColor: '#2563eb',
+    borderRadius: 4,
+    padding: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    elevation: 5,
   },
   textContainer: {
     alignItems: 'center',
-    marginTop: 8,
+    marginTop: 10,
   },
-  logoText: {
+  brandText: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  trackText: {
     fontWeight: 'bold',
-    color: '#1e3a8a',
-    textAlign: 'center',
+    color: '#1e3a8a', // Navy blue for "Track"
+    letterSpacing: 1,
+  },
+  portText: {
+    fontWeight: 'bold',
+    color: '#60a5fa', // Light blue for "Port"
     letterSpacing: 1,
   },
   subtitle: {
     color: '#6b7280',
     textAlign: 'center',
-    marginTop: 2,
+    marginTop: 4,
     fontStyle: 'italic',
+    fontWeight: '500',
   },
 });
