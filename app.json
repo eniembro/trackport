@@ -1,0 +1,52 @@
+{
+  "expo": {
+    "name": "TrackPort",
+    "slug": "trackport",
+    "version": "1.0.0",
+    "description": "Sistema de Gestión de Contenedores y Trámites Aduanales - www.track-port.com",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.trackport.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.trackport.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "name": "TrackPort - Gestión de Contenedores",
+      "shortName": "TrackPort",
+      "lang": "es",
+      "scope": "/",
+      "themeColor": "#007AFF"
+    },
+    "scheme": "trackport",
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "trackport-production"
+      }
+    }
+  }
+}

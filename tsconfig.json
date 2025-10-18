@@ -1,0 +1,63 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "incremental": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@/components/*": [
+        "./components/*"
+      ],
+      "@/contexts/*": [
+        "./contexts/*"
+      ],
+      "@/types/*": [
+        "./types/*"
+      ],
+      "@/services/*": [
+        "./services/*"
+      ],
+      "@/utils/*": [
+        "./utils/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "app/**/*",
+    "components/**/*",
+    "contexts/**/*",
+    "types/**/*",
+    "services/**/*",
+    "utils/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    ".expo",
+    "dist",
+    ".next"
+  ]
+}
