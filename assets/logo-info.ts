@@ -1,16 +1,28 @@
 // TrackPort Official Logo
-// This file represents the official TrackPort logo
-// The actual logo image should be placed in the assets folder
+// Professional logo design with container and crane icons
 export const TRACKPORT_LOGO = {
-  name: 'TrackPort Official Logo',
-  description: 'Logo oficial de TrackPort con contenedor y grúa',
+  name: 'TrackPort Professional Logo',
+  description: 'Logo profesional de TrackPort con contenedor e iconos de puerto',
   colors: {
-    primary: '#1e3a8a', // Azul principal del logo
-    secondary: '#3b82f6', // Azul secundario
-    accent: '#93c5fd', // Azul claro del contenedor
+    primary: '#1e3a8a', // Azul principal (Navy Blue)
+    secondary: '#3b82f6', // Azul secundario (Blue)
+    accent: '#93c5fd', // Azul claro para iconos (Light Blue)
+    text: '#1e3a8a', // Color del texto principal
+    subtitle: '#6b7280', // Color del subtítulo (Gray)
+  },
+  icons: {
+    container: 'cube-outline', // Ionicon para contenedor
+    crane: 'construct-outline', // Ionicon para grúa/construcción
   },
   dimensions: {
-    width: 400,
-    height: 400,
+    small: { width: 60, height: 60 },
+    medium: { width: 100, height: 100 },
+    large: { width: 150, height: 150 },
+  },
+  typography: {
+    main: 'TrackPort',
+    subtitle: 'Container Tracking & Customs',
+    fontWeight: 'bold',
+    letterSpacing: 1,
   },
 };

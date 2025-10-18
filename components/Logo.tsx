@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 interface LogoProps {
   size?: 'small' | 'medium' | 'large';
@@ -55,18 +56,28 @@ export const Logo: React.FC<LogoProps> = ({
     <View style={styles.container}>
       {(variant === 'full' || variant === 'icon-only') && (
         <View style={[styles.logoContainer, logoSize]}>
-          {/* Placeholder para el logo - aquí irá la imagen real */}
-          <View style={[styles.logoPlaceholder, logoSize]}>
-            <Text style={styles.logoIcon}>🏗️</Text>
-            <Text style={styles.logoIcon}>📦</Text>
+          <View style={[styles.logoBackground, logoSize]}>
+            {/* Contenedor principal */}
+            <View style={styles.containerIcon}>
+              <Ionicons name="cube-outline" size={logoSize.width * 0.3} color="#93c5fd" />
+            </View>
+            {/* Grúa portuaria */}
+            <View style={styles.craneIcon}>
+              <Ionicons name="construct-outline" size={logoSize.width * 0.2} color="#93c5fd" />
+            </View>
           </View>
         </View>
       )}
       
       {showText && variant !== 'icon-only' && (
-        <Text style={[styles.logoText, { fontSize: textSize }]}>
-          TrackPort
-        </Text>
+        <View style={styles.textContainer}>
+          <Text style={[styles.logoText, { fontSize: textSize }]}>
+            TrackPort
+          </Text>
+          <Text style={[styles.subtitle, { fontSize: textSize * 0.4 }]}>
+            Container Tracking & Customs
+          </Text>
+        </View>
       )}
     </View>
   );
@@ -82,25 +93,44 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 8,
   },
-  logoPlaceholder: {
+  logoBackground: {
     backgroundColor: '#1e3a8a',
-    borderRadius: 15,
+    borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 8,
+    position: 'relative',
   },
-  logoIcon: {
-    fontSize: 24,
-    color: '#93c5fd',
+  containerIcon: {
+    position: 'absolute',
+    top: '30%',
+    left: '50%',
+    transform: [{ translateX: -15 }, { translateY: -10 }],
+  },
+  craneIcon: {
+    position: 'absolute',
+    top: '15%',
+    left: '20%',
+    transform: [{ translateX: -5 }, { translateY: -5 }],
+  },
+  textContainer: {
+    alignItems: 'center',
+    marginTop: 8,
   },
   logoText: {
     fontWeight: 'bold',
     color: '#1e3a8a',
     textAlign: 'center',
+    letterSpacing: 1,
+  },
+  subtitle: {
+    color: '#6b7280',
+    textAlign: 'center',
+    marginTop: 2,
+    fontStyle: 'italic',
   },
 });
