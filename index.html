@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrackPort - Sistema de Gestión</title>
+    <title>TrackPort - Sistema de Gestión | www.track-port.com</title>
+    <meta name="description" content="Sistema profesional de gestión de contenedores y trámites aduanales en www.track-port.com">
+    <meta name="keywords" content="trackport, contenedores, aduanas, logística, track-port.com">
+    <link rel="canonical" href="https://www.track-port.com">
+    
+    <!-- Auto-redirect to custom domain -->
+    <script>
+        if (window.location.hostname === 'eniembro.github.io' && window.location.pathname.includes('/trackport')) {
+            window.location.replace('https://www.track-port.com' + window.location.search + window.location.hash);
+        }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -1293,49 +1303,49 @@
     <script>
         console.log('🚢 TrackPort Sistema Iniciado');
         
-        // Usuarios reales del sistema (coinciden con Supabase)
+        // Usuarios reales del sistema (coinciden con dominio track-port.com)
         const realUsers = {
-            'admin@trackport.com': { 
+            'admin@track-port.com': { 
                 name: 'Administrador Principal', 
                 role: 'main_admin',
                 displayRole: 'Administrador Principal'
             },
-            'fanny@trackport.com': { 
+            'fanny@track-port.com': { 
                 name: 'Fanny Administrador', 
-                role: 'customer_service',
-                displayRole: 'Servicio al Cliente'
+                role: 'main_admin',
+                displayRole: 'Administrador Principal'
             },
-            'lrazo@trackport.com': { 
-                name: 'L. Razo', 
-                role: 'customs_broker',
-                displayRole: 'Agente Aduanal'
+            'lrazo@track-port.com': { 
+                name: 'L. Razo Administrador', 
+                role: 'main_admin',
+                displayRole: 'Administrador Principal'
             },
-            'sac1@trackport.com': { 
+            'sac1@track-port.com': { 
                 name: 'Servicio al Cliente 1', 
                 role: 'customer_service',
                 displayRole: 'Servicio al Cliente'
             },
-            'sac2@trackport.com': { 
+            'sac2@track-port.com': { 
                 name: 'Servicio al Cliente 2', 
                 role: 'customer_service',
                 displayRole: 'Servicio al Cliente'
             },
-            'ventas1@trackport.com': { 
+            'ventas1@track-port.com': { 
                 name: 'Ejecutivo de Ventas 1', 
                 role: 'sales',
                 displayRole: 'Ventas'
             },
-            'ventas2@trackport.com': { 
+            'ventas2@track-port.com': { 
                 name: 'Ejecutivo de Ventas 2', 
                 role: 'sales',
                 displayRole: 'Ventas'
             },
-            'aduana@trackport.com': { 
-                name: 'Agente Aduanal', 
+            'aduana_lzo@track-port.com': { 
+                name: 'Agente Aduanal LZO', 
                 role: 'customs_broker',
                 displayRole: 'Agente Aduanal'
             },
-            'client@trackport.com': { 
+            'cliente@track-port.com': { 
                 name: 'Cliente Demo', 
                 role: 'client',
                 displayRole: 'Cliente'
