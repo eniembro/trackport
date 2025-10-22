@@ -60,48 +60,99 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            gap: 15px;
+            margin-bottom: 25px;
+            gap: 20px;
+            flex-direction: column;
+        }
+        
+        @media (min-width: 480px) {
+            .logo {
+                flex-direction: row;
+                gap: 20px;
+            }
         }
         
         .logo-icon {
-            width: 80px;
-            height: 60px;
-            background: linear-gradient(135deg, #1e40af, #2563eb);
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+            width: 90px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .logo-icon::before {
+        .truck-logo {
+            width: 85px;
+            height: 65px;
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+            border-radius: 8px 2px 8px 8px;
+            position: relative;
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+        }
+        
+        .truck-logo::before {
             content: '';
             position: absolute;
-            top: 12px;
-            left: 8px;
-            width: 64px;
-            height: 36px;
-            background: linear-gradient(135deg, #60a5fa, #3b82f6);
-            border-radius: 6px;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.2);
+            top: 8px;
+            left: 6px;
+            width: 50px;
+            height: 28px;
+            background: linear-gradient(135deg, #60a5fa, #93c5fd);
+            border-radius: 4px;
+            box-shadow: inset 0 1px 3px rgba(255,255,255,0.3);
         }
         
-        .logo-icon::after {
-            content: '📦';
+        .truck-logo::after {
+            content: '';
             position: absolute;
-            top: 18px;
-            left: 28px;
-            font-size: 24px;
-            filter: brightness(1.2);
+            top: 42px;
+            left: 10px;
+            width: 8px;
+            height: 8px;
+            background: #1f2937;
+            border-radius: 50%;
+            box-shadow: 20px 0 0 #1f2937, 40px 0 0 #1f2937;
+        }
+        
+        .container-box {
+            position: absolute;
+            top: 12px;
+            right: 8px;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+        
+        .container-box::before {
+            content: '📦';
+            font-size: 12px;
         }
         
         .logo-text {
-            font-size: 42px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1e40af, #2563eb);
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 40%, #3b82f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 8px rgba(30,64,175,0.3);
+            letter-spacing: -1px;
+        }
+        
+        .logo-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            border-radius: 2px;
         }
         
         .subtitle {
@@ -363,7 +414,11 @@
         <!-- Login Section -->
         <div id="loginSection">
             <div class="logo">
-                <div class="logo-icon"></div>
+                <div class="logo-icon">
+                    <div class="truck-logo">
+                        <div class="container-box"></div>
+                    </div>
+                </div>
                 <div class="logo-text">TrackPort</div>
             </div>
             <div class="subtitle">
