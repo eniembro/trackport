@@ -41,6 +41,18 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .app-container::before {
@@ -78,6 +90,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: slideInLeft 0.8s ease-out 0.1s both;
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
         .truck-logo {
@@ -87,6 +111,12 @@
             border-radius: 8px 2px 8px 8px;
             position: relative;
             box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .truck-logo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.5);
         }
         
         .truck-logo::before {
@@ -141,6 +171,18 @@
             background-clip: text;
             text-shadow: 2px 2px 8px rgba(30,64,175,0.3);
             letter-spacing: -1px;
+            animation: slideInRight 0.8s ease-out 0.3s both;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
         .logo-text::after {
