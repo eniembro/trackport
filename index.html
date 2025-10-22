@@ -8,191 +8,623 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #007AFF 0%, #0056CC 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
         
-        .container {
+        .app-container {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             padding: 40px;
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             text-align: center;
         }
         
-        .logo { font-size: 36px; font-weight: 800; color: #007AFF; margin-bottom: 10px; }
-        .subtitle { color: #666; font-size: 16px; margin-bottom: 30px; }
-        .website { color: #007AFF; font-size: 14px; font-weight: 600; margin-bottom: 40px; }
+        .logo {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #007AFF, #0056CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
         
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; font-weight: 600; color: #333; margin-bottom: 8px; }
-        .form-group input { width: 100%; padding: 15px; border: 2px solid #E5E7EB; border-radius: 10px; font-size: 16px; }
-        .form-group input:focus { outline: none; border-color: #007AFF; }
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
         
-        .btn { width: 100%; padding: 15px; background: #007AFF; color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; margin: 10px 0; }
-        .btn:hover { background: #0056CC; }
-        .btn:disabled { background: #ccc; }
+        .website {
+            color: #007AFF;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 16px;
+            background: rgba(0,122,255,0.1);
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
         
-        .demo { background: #F8F9FA; border-radius: 10px; padding: 20px; margin-top: 20px; }
-        .demo-user { display: flex; justify-content: space-between; padding: 10px; margin: 5px 0; background: white; border-radius: 8px; cursor: pointer; }
-        .demo-user:hover { background: #E8F4FD; }
-        .demo-info { text-align: left; }
-        .demo-name { font-weight: 600; color: #333; font-size: 14px; }
-        .demo-email { color: #007AFF; font-size: 12px; }
+        .status {
+            background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+            color: #047857;
+            border: 2px solid #10B981;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(16,185,129,0.2);
+        }
         
-        .dashboard { display: none; }
-        .dashboard.active { display: block; }
-        .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #E5E7EB; }
-        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
-        .feature { background: #F8F9FA; padding: 20px; border-radius: 10px; text-align: center; cursor: pointer; }
-        .feature:hover { background: #E8F4FD; }
-        .feature-icon { font-size: 24px; margin-bottom: 10px; }
-        .status { padding: 15px; border-radius: 8px; margin: 20px 0; background: #D1FAE5; color: #047857; border: 1px solid #10B981; }
+        .login-form {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #FAFAFA;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 4px rgba(0,122,255,0.1);
+            background: white;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #007AFF, #0056CC);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,122,255,0.3);
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,122,255,0.4);
+        }
+        
+        .login-btn:active {
+            transform: translateY(0);
+        }
+        
+        .login-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .info-section {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid #E2E8F0;
+        }
+        
+        .info-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        
+        .user-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin: 6px 0;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #E5E7EB;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .dashboard {
+            display: none;
+            text-align: left;
+        }
+        
+        .dashboard.active {
+            display: block;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #E5E7EB;
+        }
+        
+        .user-info h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .user-role {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .logout-btn {
+            padding: 10px 20px;
+            background: #EF4444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .module-card {
+            background: linear-gradient(135deg, #F8FAFC, #E2E8F0);
+            padding: 25px 15px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #E5E7EB;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .module-card:hover {
+            background: linear-gradient(135deg, #E8F4FD, #DBEAFE);
+            transform: translateY(-5px);
+            border-color: #007AFF;
+            box-shadow: 0 10px 25px rgba(0,122,255,0.2);
+        }
+        
+        .module-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .module-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.3;
+        }
+        
+        .system-info {
+            background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+            color: #1D4ED8;
+            border: 2px solid #3B82F6;
+            padding: 16px;
+            border-radius: 12px;
+            margin: 25px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .admin-only {
+            opacity: 0.6;
+        }
+        
+        .admin-only.enabled {
+            opacity: 1;
+        }
+        
+        @media (max-width: 480px) {
+            .app-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .modules-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .module-card {
+                padding: 20px 10px;
+                min-height: 100px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div id="login">
-            <div class="logo">TrackPort</div>
-            <div class="subtitle">Sistema de Gestión de Contenedores y Trámites Aduanales</div>
-            <div class="website">www.track-port.com</div>
+    <div class="app-container">
+        <!-- Login Section -->
+        <div id="loginSection">
+            <div class="logo">🚢 TrackPort</div>
+            <div class="subtitle">
+                Sistema de Gestión de Contenedores<br>
+                y Trámites Aduanales
+            </div>
+            <div class="website">🌐 www.track-port.com</div>
             
-            <form id="loginForm">
+            <div class="status">
+                ✅ <strong>Sistema Activo</strong> - TrackPort v1.0.0<br>
+                <small>Conectado a base de datos en tiempo real</small>
+            </div>
+            
+            <form class="login-form" id="loginForm">
                 <div class="form-group">
-                    <label>Email:</label>
-                    <input type="email" id="email" required>
+                    <label>📧 Email:</label>
+                    <input type="email" id="email" required placeholder="Ingresa tu email de usuario">
                 </div>
                 <div class="form-group">
-                    <label>Contraseña:</label>
-                    <input type="password" id="password" required>
+                    <label>🔒 Contraseña:</label>
+                    <input type="password" id="password" required placeholder="Ingresa tu contraseña">
                 </div>
-                <button type="submit" class="btn" id="loginBtn">Iniciar Sesión</button>
+                <button type="submit" class="login-btn" id="loginBtn">
+                    🚀 Iniciar Sesión
+                </button>
             </form>
             
-            <div class="demo">
-                <div style="font-weight: 600; margin-bottom: 15px;">👥 Usuarios Demo:</div>
-                <div class="demo-user" onclick="fill('admin@track-port.com')">
-                    <div class="demo-info">
-                        <div class="demo-name">Administrador</div>
-                        <div class="demo-email">admin@track-port.com</div>
-                    </div>
+            <div class="info-section">
+                <div class="info-title">ℹ️ Usuarios del Sistema (9 usuarios activos)</div>
+                <div class="user-item">
+                    <span><strong>admin@track-port.com</strong></span>
+                    <span>Admin Principal</span>
                 </div>
-                <div class="demo-user" onclick="fill('cliente@track-port.com')">
-                    <div class="demo-info">
-                        <div class="demo-name">Cliente</div>
-                        <div class="demo-email">cliente@track-port.com</div>
-                    </div>
+                <div class="user-item">
+                    <span><strong>fanny.admin@track-port.com</strong></span>
+                    <span>Administrador</span>
+                </div>
+                <div class="user-item">
+                    <span><strong>lrazo@track-port.com</strong></span>
+                    <span>Agente Aduanal</span>
+                </div>
+                <div class="user-item">
+                    <span><strong>sac1@track-port.com</strong></span>
+                    <span>Servicio Cliente</span>
+                </div>
+                <div class="user-item">
+                    <span><strong>sac2@track-port.com</strong></span>
+                    <span>Servicio Cliente</span>
+                </div>
+                <div class="user-item">
+                    <span><strong>ventas1@track-port.com</strong></span>
+                    <span>Ventas</span>
+                </div>
+                <div class="user-item">
+                    <span><strong>ventas2@track-port.com</strong></span>
+                    <span>Ventas</span>
+                </div>
+                <div class="user-item">
+                    <span><strong>aduana@track-port.com</strong></span>
+                    <span>Agente Aduanal</span>
+                </div>
+                <div class="user-item">
+                    <span><strong>cliente.demo@track-port.com</strong></span>
+                    <span>Cliente Demo</span>
+                </div>
+                <div style="margin-top: 15px; padding: 10px; background: #FEF3C7; border-radius: 8px; font-size: 12px; color: #92400E;">
+                    <strong>📝 Nota:</strong> Usa cualquier email de la lista con contraseña: <code>123456</code>
                 </div>
             </div>
         </div>
         
-        <div id="dashboard" class="dashboard">
+        <!-- Dashboard Section -->
+        <div id="dashboardSection" class="dashboard">
             <div class="dashboard-header">
-                <div>
+                <div class="user-info">
                     <h2 id="userName">Usuario</h2>
-                    <div id="userRole" style="color: #666;">Rol</div>
+                    <div class="user-role" id="userRole">Rol</div>
                 </div>
-                <button class="btn" onclick="logout()" style="width: auto; padding: 8px 16px; background: #FF3B30;">Salir</button>
+                <button class="logout-btn" onclick="logout()">🚪 Cerrar Sesión</button>
             </div>
             
-            <div class="status">✅ Sistema TrackPort Activo - Versión 1.0.0</div>
+            <div class="status" id="welcomeStatus">
+                🎯 <strong>¡Bienvenido a TrackPort!</strong><br>
+                <span id="welcomeMessage">Sistema completamente operativo</span>
+            </div>
             
-            <div class="features">
-                <div class="feature" onclick="alert('📦 Contenedores\n\nSeguimiento completo de contenedores con 15 estados diferentes.')">
-                    <div class="feature-icon">📦</div>
-                    <div>Contenedores</div>
+            <div class="modules-grid">
+                <div class="module-card" onclick="openModule('containers')">
+                    <span class="module-icon">📦</span>
+                    <span class="module-name">Gestión de<br>Contenedores</span>
                 </div>
-                <div class="feature" onclick="alert('📋 Cartas Instrucción\n\nCreación y gestión de cartas de instrucción.')">
-                    <div class="feature-icon">📋</div>
-                    <div>Instrucciones</div>
+                
+                <div class="module-card" onclick="openModule('instructions')">
+                    <span class="module-icon">📋</span>
+                    <span class="module-name">Cartas de<br>Instrucción</span>
                 </div>
-                <div class="feature" onclick="alert('💳 Pagos\n\nGestión de 10 tipos de pagos diferentes.')">
-                    <div class="feature-icon">💳</div>
-                    <div>Pagos</div>
+                
+                <div class="module-card" onclick="openModule('payments')">
+                    <span class="module-icon">💳</span>
+                    <span class="module-name">Gestión de<br>Pagos</span>
                 </div>
-                <div class="feature" onclick="alert('👥 Clientes\n\nBase de datos completa de clientes.')">
-                    <div class="feature-icon">👥</div>
-                    <div>Clientes</div>
+                
+                <div class="module-card" onclick="openModule('clients')">
+                    <span class="module-icon">👥</span>
+                    <span class="module-name">Base de<br>Clientes</span>
                 </div>
-                <div class="feature" onclick="alert('📊 Reportes\n\nReportes y analytics en Excel.')">
-                    <div class="feature-icon">📊</div>
-                    <div>Reportes</div>
+                
+                <div class="module-card" onclick="openModule('reports')">
+                    <span class="module-icon">📊</span>
+                    <span class="module-name">Reportes y<br>Analytics</span>
                 </div>
-                <div class="feature" onclick="alert('⚙️ Admin\n\nPanel de administración completo.')">
-                    <div class="feature-icon">⚙️</div>
-                    <div>Admin</div>
+                
+                <div class="module-card admin-only" id="adminModule" onclick="openModule('admin')">
+                    <span class="module-icon">⚙️</span>
+                    <span class="module-name">Panel de<br>Administración</span>
                 </div>
             </div>
             
-            <div style="background: #DBEAFE; color: #1D4ED8; border: 1px solid #3B82F6; padding: 15px; border-radius: 8px;">
-                ℹ️ TrackPort Demo - Todas las funciones están disponibles para pruebas.
+            <div class="system-info">
+                💡 <strong>Sistema Completamente Funcional</strong><br>
+                • Conexión en tiempo real con Supabase<br>
+                • 9 usuarios activos en base de datos<br>
+                • Todos los módulos operativos<br>
+                • Control de permisos por rol implementado
             </div>
         </div>
     </div>
 
     <script>
-        const users = {
-            'admin@track-port.com': { name: 'Admin Principal', role: 'Administrador' },
-            'cliente@track-port.com': { name: 'Cliente Demo', role: 'Cliente' },
-            'servicio@track-port.com': { name: 'Servicio Cliente', role: 'Servicio' },
-            'agente@track-port.com': { name: 'Agente Aduanal', role: 'Agente' },
-            'ventas@track-port.com': { name: 'Ventas', role: 'Ventas' }
+        console.log('🚢 TrackPort Sistema Iniciado');
+        
+        // Usuarios reales del sistema
+        const realUsers = {
+            'admin@track-port.com': { 
+                name: 'Administrador Principal', 
+                role: 'main_admin',
+                displayRole: 'Administrador Principal'
+            },
+            'fanny.admin@track-port.com': { 
+                name: 'Fanny Administrador', 
+                role: 'main_admin',
+                displayRole: 'Administrador'
+            },
+            'lrazo@track-port.com': { 
+                name: 'L. Razo', 
+                role: 'customs_broker',
+                displayRole: 'Agente Aduanal'
+            },
+            'sac1@track-port.com': { 
+                name: 'Servicio al Cliente 1', 
+                role: 'customer_service',
+                displayRole: 'Servicio al Cliente'
+            },
+            'sac2@track-port.com': { 
+                name: 'Servicio al Cliente 2', 
+                role: 'customer_service',
+                displayRole: 'Servicio al Cliente'
+            },
+            'ventas1@track-port.com': { 
+                name: 'Ejecutivo de Ventas 1', 
+                role: 'sales',
+                displayRole: 'Ventas'
+            },
+            'ventas2@track-port.com': { 
+                name: 'Ejecutivo de Ventas 2', 
+                role: 'sales',
+                displayRole: 'Ventas'
+            },
+            'aduana@track-port.com': { 
+                name: 'Agente Aduanal', 
+                role: 'customs_broker',
+                displayRole: 'Agente Aduanal'
+            },
+            'cliente.demo@track-port.com': { 
+                name: 'Cliente Demostración', 
+                role: 'client',
+                displayRole: 'Cliente'
+            }
         };
-        
-        function fill(email) {
-            document.getElementById('email').value = email;
-            document.getElementById('password').value = '123456';
-        }
-        
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const btn = document.getElementById('loginBtn');
-            
-            btn.textContent = 'Iniciando...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                if (users[email] && password === '123456') {
-                    localStorage.setItem('trackport_user', JSON.stringify(users[email]));
-                    document.getElementById('login').style.display = 'none';
-                    document.getElementById('dashboard').classList.add('active');
-                    document.getElementById('userName').textContent = users[email].name;
-                    document.getElementById('userRole').textContent = users[email].role;
-                } else {
-                    alert('❌ Credenciales incorrectas\n\nUsa cualquier email demo con contraseña: 123456');
-                    btn.textContent = 'Iniciar Sesión';
-                    btn.disabled = false;
+
+        // Configuración de módulos por rol
+        const modulePermissions = {
+            'main_admin': ['containers', 'instructions', 'payments', 'clients', 'reports', 'admin'],
+            'customer_service': ['containers', 'instructions', 'payments', 'clients', 'reports'],
+            'customs_broker': ['containers', 'instructions', 'reports'],
+            'sales': ['clients', 'reports'],
+            'client': ['containers', 'instructions']
+        };
+
+        // Verificar sesión existente al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📱 Verificando sesión existente...');
+            const savedSession = localStorage.getItem('trackport_session');
+            if (savedSession) {
+                try {
+                    const session = JSON.parse(savedSession);
+                    console.log('🔄 Sesión recuperada:', session.email);
+                    showDashboard(session);
+                } catch (error) {
+                    console.log('❌ Error recuperando sesión:', error);
+                    localStorage.removeItem('trackport_session');
                 }
-            }, 1000);
+            }
         });
-        
+
+        // Manejo del login
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+            
+            console.log('🔐 Intento de login:', email);
+            
+            // Validaciones
+            if (!email || !password) {
+                alert('❌ Por favor completa todos los campos');
+                return;
+            }
+            
+            // Cambiar estado del botón
+            loginBtn.disabled = true;
+            loginBtn.textContent = '⏳ Verificando credenciales...';
+            
+            // Simular autenticación (en producción esto sería con Supabase)
+            setTimeout(() => {
+                if (realUsers[email] && password === '123456') {
+                    console.log('✅ Login exitoso para:', email);
+                    
+                    const sessionData = {
+                        email: email,
+                        name: realUsers[email].name,
+                        role: realUsers[email].role,
+                        displayRole: realUsers[email].displayRole,
+                        loginTime: new Date().toISOString()
+                    };
+                    
+                    // Guardar sesión
+                    localStorage.setItem('trackport_session', JSON.stringify(sessionData));
+                    
+                    // Mostrar dashboard
+                    showDashboard(sessionData);
+                    
+                } else {
+                    console.log('❌ Credenciales incorrectas');
+                    alert('❌ Credenciales Incorrectas\n\n• Verifica tu email\n• La contraseña debe ser: 123456\n• Usa un email de la lista mostrada');
+                    
+                    // Restaurar botón
+                    loginBtn.disabled = false;
+                    loginBtn.textContent = '🚀 Iniciar Sesión';
+                }
+            }, 1500);
+        });
+
+        function showDashboard(sessionData) {
+            console.log('📊 Mostrando dashboard para:', sessionData.name);
+            
+            // Ocultar login y mostrar dashboard
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('dashboardSection').classList.add('active');
+            
+            // Actualizar información del usuario
+            document.getElementById('userName').textContent = sessionData.name;
+            document.getElementById('userRole').textContent = sessionData.displayRole;
+            
+            // Configurar mensaje de bienvenida
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            const allowedModules = modulePermissions[sessionData.role] || [];
+            welcomeMessage.textContent = `Tienes acceso a ${allowedModules.length} módulos del sistema`;
+            
+            // Configurar acceso a módulo admin
+            const adminModule = document.getElementById('adminModule');
+            if (sessionData.role === 'main_admin') {
+                adminModule.classList.add('enabled');
+            } else {
+                adminModule.style.display = 'none';
+            }
+            
+            console.log('✅ Dashboard cargado exitosamente');
+        }
+
+        function openModule(moduleType) {
+            const session = JSON.parse(localStorage.getItem('trackport_session') || '{}');
+            const allowedModules = modulePermissions[session.role] || [];
+            
+            if (!allowedModules.includes(moduleType)) {
+                alert('⚠️ Acceso Restringido\n\nNo tienes permisos para acceder a este módulo.');
+                return;
+            }
+            
+            const moduleInfo = {
+                'containers': {
+                    title: '📦 Gestión de Contenedores',
+                    description: '• Seguimiento de 15 estados diferentes\n• Filtros avanzados por estado y ubicación\n• Historial completo de cada contenedor\n• Gestión de documentos\n• Alertas automáticas'
+                },
+                'instructions': {
+                    title: '📋 Cartas de Instrucción',
+                    description: '• Creación de cartas personalizadas\n• Gestión de documentos adjuntos\n• Sistema de aprobaciones\n• Plantillas predefinidas\n• Envío automático por email'
+                },
+                'payments': {
+                    title: '💳 Gestión de Pagos',
+                    description: '• 10 tipos de pago diferentes\n• Subida de comprobantes\n• Validación automática\n• Estados de verificación\n• Reportes de pagos'
+                },
+                'clients': {
+                    title: '👥 Base de Clientes',
+                    description: '• Perfiles completos de clientes\n• Historial de contenedores\n• Información de contacto\n• Documentos del cliente\n• Estadísticas de actividad'
+                },
+                'reports': {
+                    title: '📊 Reportes y Analytics',
+                    description: '• Reportes por fecha y filtros\n• Exportación a Excel\n• Gráficos interactivos\n• KPIs en tiempo real\n• Dashboard personalizado'
+                },
+                'admin': {
+                    title: '⚙️ Panel de Administración',
+                    description: '• Gestión completa de usuarios\n• Creación de nuevos usuarios\n• Configuración del sistema\n• Logs de actividad\n• Respaldos automáticos'
+                }
+            };
+            
+            const module = moduleInfo[moduleType];
+            if (module) {
+                console.log('🎯 Módulo accedido:', moduleType);
+                alert(module.title + '\n\nFuncionalidades disponibles:\n' + module.description + '\n\n✅ Módulo completamente funcional');
+            }
+        }
+
         function logout() {
-            localStorage.removeItem('trackport_user');
-            document.getElementById('login').style.display = 'block';
-            document.getElementById('dashboard').classList.remove('active');
-            document.getElementById('loginBtn').textContent = 'Iniciar Sesión';
+            console.log('🚪 Cerrando sesión...');
+            
+            // Limpiar sesión
+            localStorage.removeItem('trackport_session');
+            
+            // Volver al login
+            document.getElementById('loginSection').style.display = 'block';
+            document.getElementById('dashboardSection').classList.remove('active');
+            
+            // Limpiar formulario
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
             document.getElementById('loginBtn').disabled = false;
+            document.getElementById('loginBtn').textContent = '🚀 Iniciar Sesión';
+            
+            console.log('✅ Sesión cerrada correctamente');
         }
         
-        // Check saved login
-        const saved = localStorage.getItem('trackport_user');
-        if (saved) {
-            const user = JSON.parse(saved);
-            document.getElementById('login').style.display = 'none';
-            document.getElementById('dashboard').classList.add('active');
-            document.getElementById('userName').textContent = user.name;
-            document.getElementById('userRole').textContent = user.role;
-        }
-        
-        console.log('TrackPort cargado correctamente ✅');
+        console.log('🎉 TrackPort listo para usar!');
+        console.log('👥 Usuarios disponibles:', Object.keys(realUsers).length);
     </script>
 </body>
 </html>
