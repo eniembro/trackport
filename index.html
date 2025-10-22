@@ -394,6 +394,201 @@
             box-shadow: 0 6px 16px rgba(239,68,68,0.4);
         }
         
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .ai-assistant-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(139,92,246,0.3);
+        }
+        
+        .ai-assistant-btn:hover {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(139,92,246,0.4);
+        }
+        
+        /* Estilos del Asistente AI */
+        .ai-assistant {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            height: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            border: 2px solid #e5e7eb;
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        .ai-assistant.active {
+            display: flex;
+        }
+        
+        .ai-header {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ai-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+        
+        .ai-icon {
+            font-size: 24px;
+        }
+        
+        .ai-close {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ai-chat {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+        
+        .ai-message {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        
+        .ai-message.ai-user {
+            flex-direction: row-reverse;
+        }
+        
+        .ai-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .ai-bot .ai-avatar {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+        
+        .ai-user .ai-avatar {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+        
+        .ai-text {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            line-height: 1.5;
+            max-width: 280px;
+        }
+        
+        .ai-user .ai-text {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .ai-quick-actions {
+            padding: 15px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .ai-quick-btn {
+            padding: 8px 12px;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .ai-quick-btn:hover {
+            background: #e5e7eb;
+            border-color: #9ca3af;
+        }
+        
+        .ai-input-area {
+            padding: 20px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            gap: 10px;
+            background: white;
+        }
+        
+        .ai-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+        }
+        
+        .ai-input:focus {
+            border-color: #8b5cf6;
+        }
+        
+        .ai-send {
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .ai-assistant {
+                width: 95%;
+                height: 70vh;
+                bottom: 10px;
+                right: 2.5%;
+                left: 2.5%;
+            }
+        }
+        
         .modules-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -732,9 +927,33 @@
         <div id="loginSection">
             <div class="logo">
                 <div class="logo-icon">
-                    <div class="truck-logo">
-                        <div class="container-box"></div>
-                    </div>
+                    <svg width="100" height="80" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Truck Body -->
+                        <rect x="15" y="25" width="35" height="25" rx="3" fill="#2563eb" stroke="#1e40af" stroke-width="1"/>
+                        <!-- Truck Cab -->
+                        <rect x="50" y="20" width="20" height="30" rx="2" fill="#1d4ed8" stroke="#1e40af" stroke-width="1"/>
+                        <!-- Container -->
+                        <rect x="72" y="18" width="25" height="20" rx="2" fill="#1e40af" stroke="#1e3a8a" stroke-width="1"/>
+                        <!-- Building Icon on Container -->
+                        <rect x="76" y="22" width="4" height="8" fill="#60a5fa"/>
+                        <rect x="81" y="20" width="4" height="10" fill="#60a5fa"/>
+                        <rect x="86" y="24" width="4" height="6" fill="#60a5fa"/>
+                        <!-- Truck Wheels -->
+                        <circle cx="25" cy="52" r="6" fill="#1f2937" stroke="#374151" stroke-width="1"/>
+                        <circle cx="40" cy="52" r="6" fill="#1f2937" stroke="#374151" stroke-width="1"/>
+                        <circle cx="85" cy="52" r="6" fill="#1f2937" stroke="#374151" stroke-width="1"/>
+                        <!-- Wheel Rims -->
+                        <circle cx="25" cy="52" r="3" fill="#6b7280"/>
+                        <circle cx="40" cy="52" r="3" fill="#6b7280"/>
+                        <circle cx="85" cy="52" r="3" fill="#6b7280"/>
+                        <!-- TrackPort Text on Container -->
+                        <text x="84" y="32" font-family="Arial, sans-serif" font-size="4" fill="white" text-anchor="middle" font-weight="bold">TP</text>
+                        <!-- Truck Details -->
+                        <rect x="52" y="25" width="15" height="8" fill="#3b82f6" opacity="0.7"/>
+                        <rect x="18" y="30" width="8" height="4" fill="#60a5fa" opacity="0.8"/>
+                        <!-- Shadow -->
+                        <ellipse cx="55" cy="65" rx="45" ry="8" fill="#1e293b" opacity="0.2"/>
+                    </svg>
                 </div>
                 <div class="logo-text">TrackPort</div>
             </div>
@@ -850,7 +1069,10 @@
                     <h2 id="userName">Usuario</h2>
                     <div class="user-role" id="userRole">Rol</div>
                 </div>
-                <button class="logout-btn" onclick="logout()">🚪 Cerrar Sesión</button>
+                <div class="header-actions">
+                    <button class="ai-assistant-btn" onclick="toggleAIAssistant()">🤖 Asistente AI</button>
+                    <button class="logout-btn" onclick="logout()">🚪 Cerrar Sesión</button>
+                </div>
             </div>
             
             <div class="status" id="welcomeStatus">
@@ -897,6 +1119,42 @@
                 • Todos los módulos operativos<br>
                 • Control de permisos por rol implementado
             </div>
+        </div>
+    </div>
+
+    <!-- AI Assistant -->
+    <div id="aiAssistant" class="ai-assistant">
+        <div class="ai-header">
+            <div class="ai-title">
+                <span class="ai-icon">🤖</span>
+                <span>TrackPort AI Assistant</span>
+            </div>
+            <button class="ai-close" onclick="toggleAIAssistant()">✕</button>
+        </div>
+        
+        <div class="ai-chat" id="aiChat">
+            <div class="ai-message ai-bot">
+                <div class="ai-avatar">🤖</div>
+                <div class="ai-text">
+                    ¡Hola! Soy tu asistente de TrackPort. Puedo ayudarte con:
+                    <br>• Información sobre contenedores
+                    <br>• Estado de envíos
+                    <br>• Generar reportes
+                    <br>• Resolver dudas del sistema
+                    <br><br>¿En qué puedo ayudarte hoy?
+                </div>
+            </div>
+        </div>
+        
+        <div class="ai-quick-actions">
+            <button class="ai-quick-btn" onclick="sendQuickMessage('Estado de mis contenedores')">📦 Estado de Contenedores</button>
+            <button class="ai-quick-btn" onclick="sendQuickMessage('Generar reporte mensual')">📊 Generar Reporte</button>
+            <button class="ai-quick-btn" onclick="sendQuickMessage('Ayuda con el sistema')">❓ Ayuda General</button>
+        </div>
+        
+        <div class="ai-input-area">
+            <input type="text" id="aiInput" placeholder="Escribe tu pregunta aquí..." class="ai-input" onkeypress="handleAIKeyPress(event)">
+            <button class="ai-send" onclick="sendAIMessage()">📤</button>
         </div>
     </div>
 
@@ -1496,6 +1754,108 @@
         
         function backToDashboard() {
             location.reload(); // Recargar para volver al dashboard principal
+        }
+        
+        // Funciones del Asistente AI
+        function toggleAIAssistant() {
+            const assistant = document.getElementById('aiAssistant');
+            assistant.classList.toggle('active');
+        }
+        
+        function sendAIMessage() {
+            const input = document.getElementById('aiInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            // Agregar mensaje del usuario
+            addAIMessage(message, 'user');
+            input.value = '';
+            
+            // Simular respuesta del AI
+            setTimeout(() => {
+                const response = generateAIResponse(message);
+                addAIMessage(response, 'bot');
+            }, 1000);
+        }
+        
+        function sendQuickMessage(message) {
+            addAIMessage(message, 'user');
+            
+            setTimeout(() => {
+                const response = generateAIResponse(message);
+                addAIMessage(response, 'bot');
+            }, 1000);
+        }
+        
+        function addAIMessage(text, sender) {
+            const chat = document.getElementById('aiChat');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `ai-message ai-${sender}`;
+            
+            messageDiv.innerHTML = `
+                <div class="ai-avatar">${sender === 'bot' ? '🤖' : '👤'}</div>
+                <div class="ai-text">${text}</div>
+            `;
+            
+            chat.appendChild(messageDiv);
+            chat.scrollTop = chat.scrollHeight;
+        }
+        
+        function generateAIResponse(message) {
+            const session = JSON.parse(localStorage.getItem('trackport_session') || '{}');
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('contenedor') || lowerMessage.includes('container')) {
+                return `📦 <strong>Estado de Contenedores</strong><br><br>
+                        Hola ${session.name || 'Usuario'}, tienes:<br>
+                        • 12 contenedores en tránsito<br>
+                        • 8 contenedores en puerto<br>
+                        • 25 contenedores entregados este mes<br><br>
+                        ¿Te gustaría ver detalles de algún contenedor específico?`;
+            }
+            
+            if (lowerMessage.includes('reporte') || lowerMessage.includes('report')) {
+                return `📊 <strong>Reportes Disponibles</strong><br><br>
+                        Puedo generar estos reportes para ti:<br>
+                        • Reporte de contenedores por fecha<br>
+                        • Análisis financiero mensual<br>
+                        • Estadísticas de entregas<br>
+                        • Reporte de clientes activos<br><br>
+                        ¿Cuál te interesa más?`;
+            }
+            
+            if (lowerMessage.includes('ayuda') || lowerMessage.includes('help')) {
+                return `❓ <strong>Centro de Ayuda TrackPort</strong><br><br>
+                        Estoy aquí para ayudarte con:<br>
+                        • Navegación por los módulos<br>
+                        • Consultas sobre estados de envío<br>
+                        • Generación de documentos<br>
+                        • Resolución de problemas técnicos<br><br>
+                        También puedes contactar a soporte: support@track-port.com`;
+            }
+            
+            if (lowerMessage.includes('pago') || lowerMessage.includes('payment')) {
+                return `💳 <strong>Gestión de Pagos</strong><br><br>
+                        Estado de tus pagos:<br>
+                        • 5 pagos pendientes por verificar<br>
+                        • 12 pagos aprobados este mes<br>
+                        • Total procesado: $125,500 USD<br><br>
+                        ¿Necesitas ayuda con algún pago específico?`;
+            }
+            
+            // Respuesta por defecto
+            return `🤖 <strong>Asistente TrackPort</strong><br><br>
+                    Entiendo tu consulta sobre "${message}".<br><br>
+                    Basándome en tu rol como ${session.displayRole || 'Usuario'}, 
+                    puedo ayudarte con información específica del sistema.<br><br>
+                    ¿Podrías ser más específico sobre lo que necesitas?<br><br>
+                    <em>Tip: Pregunta sobre contenedores, reportes, pagos o ayuda general.</em>`;
+        }
+        
+        function handleAIKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendAIMessage();
+            }
         }
 
         function logout() {
