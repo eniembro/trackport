@@ -348,8 +348,20 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #E5E7EB;
+            padding: 25px;
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            border-radius: 16px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(30,64,175,0.3);
+        }
+        
+        .dashboard-header .user-info h2 {
+            color: white;
+            margin-bottom: 5px;
+        }
+        
+        .dashboard-header .user-role {
+            color: #bfdbfe;
         }
         
         .user-info h2 {
@@ -364,14 +376,22 @@
         }
         
         .logout-btn {
-            padding: 10px 20px;
-            background: #EF4444;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(239,68,68,0.3);
+        }
+        
+        .logout-btn:hover {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(239,68,68,0.4);
         }
         
         .modules-grid {
@@ -543,6 +563,27 @@
                             style="background: #6f42c1; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; margin: 2px;">
                         📋 Aduana Demo
                     </button>
+                </div>
+                
+                <!-- Información de Contacto -->
+                <div style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, #f1f5f9, #e2e8f0); border-radius: 12px; border: 1px solid #cbd5e1;">
+                    <div style="font-weight: 600; color: #1e293b; margin-bottom: 12px; text-align: center; font-size: 14px;">
+                        📞 Información de Contacto
+                    </div>
+                    <div style="font-size: 12px; color: #475569; line-height: 1.4;">
+                        <div style="margin: 6px 0;">
+                            <strong>📧 Soporte:</strong> support@track-port.com
+                        </div>
+                        <div style="margin: 6px 0;">
+                            <strong>📱 WhatsApp:</strong> +52 (xxx) xxx-xxxx
+                        </div>
+                        <div style="margin: 6px 0;">
+                            <strong>🕒 Horarios:</strong> Lun-Vie 8:00-18:00 hrs
+                        </div>
+                        <div style="margin: 8px 0 0 0; padding-top: 8px; border-top: 1px solid #cbd5e1; text-align: center; font-size: 11px; color: #64748b;">
+                            TrackPort© 2025 - Sistema Profesional de Gestión
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -762,10 +803,43 @@
             document.getElementById('userName').textContent = sessionData.name;
             document.getElementById('userRole').textContent = sessionData.displayRole;
             
-            // Configurar mensaje de bienvenida
-            const welcomeMessage = document.getElementById('welcomeMessage');
+            // Redirección automática según rol del usuario
+            let defaultView = 'Contenedores'; // Vista por defecto
+            let welcomeMessage = '';
+            
+            switch(sessionData.role) {
+                case 'main_admin':
+                    defaultView = 'Dashboard Administrativo';
+                    welcomeMessage = `¡Bienvenido Admin! Acceso completo a todos los módulos del sistema`;
+                    break;
+                case 'client':
+                    defaultView = 'Mis Contenedores';
+                    welcomeMessage = `¡Bienvenido! Aquí puedes ver el estado de tus contenedores`;
+                    break;
+                case 'customer_service':
+                    defaultView = 'Contenedores';
+                    welcomeMessage = `¡Hola ${sessionData.name}! Gestiona contenedores e instrucciones`;
+                    break;
+                case 'customs_broker':
+                    defaultView = 'Contenedores';
+                    welcomeMessage = `¡Bienvenido Agente Aduanal! Procesa documentos aduanales`;
+                    break;
+                case 'sales':
+                    defaultView = 'Clientes';
+                    welcomeMessage = `¡Hola Ventas! Gestiona clientes y reportes comerciales`;
+                    break;
+                default:
+                    defaultView = 'Contenedores';
+                    welcomeMessage = `¡Bienvenido ${sessionData.name}!`;
+            }
+            
+            // Mostrar mensaje personalizado
+            const welcomeMsgElement = document.getElementById('welcomeMessage');
             const allowedModules = modulePermissions[sessionData.role] || [];
-            welcomeMessage.textContent = `Tienes acceso a ${allowedModules.length} módulos del sistema`;
+            welcomeMsgElement.innerHTML = `
+                <strong>${welcomeMessage}</strong><br>
+                <small>Vista inicial: ${defaultView} | Módulos disponibles: ${allowedModules.length}</small>
+            `;
             
             // Configurar acceso a módulo admin
             const adminModule = document.getElementById('adminModule');
@@ -775,7 +849,7 @@
                 adminModule.style.display = 'none';
             }
             
-            console.log('✅ Dashboard cargado exitosamente');
+            console.log(`✅ Dashboard cargado - Rol: ${sessionData.role} - Vista: ${defaultView}`);
         }
 
         function openModule(moduleType) {
