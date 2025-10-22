@@ -454,6 +454,256 @@
             opacity: 1;
         }
         
+        /* Estilos para módulos funcionales */
+        .module-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            border-radius: 12px;
+            color: white;
+        }
+        
+        .back-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .stats-grid, .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .stat-card, .kpi-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid #e5e7eb;
+        }
+        
+        .stat-number, .kpi-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1e40af;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label, .kpi-label {
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            align-items: center;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .search-btn, .add-btn, .primary-btn, .secondary-btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .search-btn, .primary-btn {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .add-btn, .secondary-btn {
+            background: #10b981;
+            color: white;
+        }
+        
+        .table-header, .table-row {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            padding: 15px;
+            align-items: center;
+        }
+        
+        .table-header {
+            background: #f3f4f6;
+            font-weight: 700;
+            color: #374151;
+            border-radius: 8px;
+        }
+        
+        .table-row {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin: 5px 0;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-badge.transit {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+        
+        .status-badge.port {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .status-badge.delivered {
+            background: #d1fae5;
+            color: #047857;
+        }
+        
+        .status-badge.pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .status-badge.approved {
+            background: #d1fae5;
+            color: #047857;
+        }
+        
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .payment-type {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            font-weight: 600;
+        }
+        
+        .instruction-card, .client-card, .admin-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .instruction-header, .client-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .instruction-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .edit-btn, .view-btn, .send-btn, .download-btn, .admin-btn, .report-btn {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .edit-btn {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .view-btn {
+            background: #6366f1;
+            color: white;
+        }
+        
+        .send-btn, .admin-btn {
+            background: #10b981;
+            color: white;
+        }
+        
+        .download-btn {
+            background: #8b5cf6;
+            color: white;
+        }
+        
+        .report-btn {
+            background: #3b82f6;
+            color: white;
+            margin: 5px;
+        }
+        
+        .kpi-trend.positive {
+            color: #10b981;
+        }
+        
+        .kpi-trend.negative {
+            color: #ef4444;
+        }
+        
+        .kpi-trend.neutral {
+            color: #6b7280;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .status-indicator.online {
+            background: #10b981;
+        }
+        
+        .status-indicator.offline {
+            background: #ef4444;
+        }
+        
         @media (max-width: 480px) {
             .app-container {
                 padding: 30px 20px;
@@ -467,6 +717,11 @@
             .module-card {
                 padding: 20px 10px;
                 min-height: 100px;
+            }
+            
+            .table-header, .table-row {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
         }
     </style>
@@ -742,19 +997,26 @@
             loginBtn.disabled = true;
             loginBtn.textContent = '⏳ Verificando credenciales...';
             
-            // Validación de credenciales (coincide con usuarios reales de Supabase)
+            // Validación de credenciales SIMPLIFICADA
             setTimeout(() => {
                 let isValidUser = false;
                 
-                // Validar credenciales específicas por usuario
-                if (realUsers[email]) {
-                    const userName = email.split('@')[0]; // obtener parte antes de @
-                    const expectedPassword = userName + '123'; // admin123, fanny123, etc.
-                    
-                    // Permitir tanto la contraseña específica como la universal
-                    if (password === expectedPassword || password === '123456' || password === userName + '123') {
-                        isValidUser = true;
-                    }
+                // Lista de usuarios válidos con contraseñas simples
+                const validCredentials = {
+                    'admin@trackport.com': ['admin123', '123456'],
+                    'fanny@trackport.com': ['fanny123', '123456'],
+                    'lrazo@trackport.com': ['lrazo123', '123456'],
+                    'sac1@trackport.com': ['sac123', '123456'],
+                    'sac2@trackport.com': ['sac456', '123456'],
+                    'ventas1@trackport.com': ['ventas123', '123456'],
+                    'ventas2@trackport.com': ['ventas456', '123456'],
+                    'aduana@trackport.com': ['aduana123', '123456'],
+                    'client@trackport.com': ['client123', '123456']
+                };
+                
+                // Validar si el usuario existe y la contraseña es correcta
+                if (validCredentials[email] && validCredentials[email].includes(password)) {
+                    isValidUser = true;
                 }
                 
                 if (isValidUser) {
@@ -861,38 +1123,379 @@
                 return;
             }
             
-            const moduleInfo = {
-                'containers': {
-                    title: '📦 Gestión de Contenedores',
-                    description: '• Seguimiento de 15 estados diferentes\n• Filtros avanzados por estado y ubicación\n• Historial completo de cada contenedor\n• Gestión de documentos\n• Alertas automáticas'
-                },
-                'instructions': {
-                    title: '📋 Cartas de Instrucción',
-                    description: '• Creación de cartas personalizadas\n• Gestión de documentos adjuntos\n• Sistema de aprobaciones\n• Plantillas predefinidas\n• Envío automático por email'
-                },
-                'payments': {
-                    title: '💳 Gestión de Pagos',
-                    description: '• 10 tipos de pago diferentes\n• Subida de comprobantes\n• Validación automática\n• Estados de verificación\n• Reportes de pagos'
-                },
-                'clients': {
-                    title: '👥 Base de Clientes',
-                    description: '• Perfiles completos de clientes\n• Historial de contenedores\n• Información de contacto\n• Documentos del cliente\n• Estadísticas de actividad'
-                },
-                'reports': {
-                    title: '📊 Reportes y Analytics',
-                    description: '• Reportes por fecha y filtros\n• Exportación a Excel\n• Gráficos interactivos\n• KPIs en tiempo real\n• Dashboard personalizado'
-                },
-                'admin': {
-                    title: '⚙️ Panel de Administración',
-                    description: '• Gestión completa de usuarios\n• Creación de nuevos usuarios\n• Configuración del sistema\n• Logs de actividad\n• Respaldos automáticos'
-                }
+            // Ocultar dashboard y mostrar módulo específico
+            document.getElementById('dashboardSection').classList.remove('active');
+            
+            // Crear contenido del módulo
+            showModuleContent(moduleType, session);
+        }
+        
+        function showModuleContent(moduleType, session) {
+            const moduleData = {
+                'containers': generateContainersModule(session),
+                'instructions': generateInstructionsModule(session),
+                'payments': generatePaymentsModule(session),
+                'clients': generateClientsModule(session),
+                'reports': generateReportsModule(session),
+                'admin': generateAdminModule(session)
             };
             
-            const module = moduleInfo[moduleType];
-            if (module) {
-                console.log('🎯 Módulo accedido:', moduleType);
-                alert(module.title + '\n\nFuncionalidades disponibles:\n' + module.description + '\n\n✅ Módulo completamente funcional');
-            }
+            const content = moduleData[moduleType] || '<div>Módulo no encontrado</div>';
+            
+            // Reemplazar contenido del dashboard con el módulo
+            const dashboardSection = document.getElementById('dashboardSection');
+            dashboardSection.innerHTML = content;
+            dashboardSection.classList.add('active');
+        }
+        
+        function generateContainersModule(session) {
+            return `
+                <div class="module-container">
+                    <div class="module-header">
+                        <h2>📦 Gestión de Contenedores</h2>
+                        <button onclick="backToDashboard()" class="back-btn">← Volver al Dashboard</button>
+                    </div>
+                    
+                    <div class="module-content">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">152</div>
+                                <div class="stat-label">Contenedores Activos</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">28</div>
+                                <div class="stat-label">En Tránsito</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">45</div>
+                                <div class="stat-label">En Puerto</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">79</div>
+                                <div class="stat-label">Entregados</div>
+                            </div>
+                        </div>
+                        
+                        <div class="search-bar">
+                            <input type="text" placeholder="Buscar por número de contenedor..." class="search-input">
+                            <button class="search-btn">🔍 Buscar</button>
+                            <button class="add-btn">➕ Nuevo Contenedor</button>
+                        </div>
+                        
+                        <div class="containers-table">
+                            <div class="table-header">
+                                <div>Contenedor</div>
+                                <div>Estado</div>
+                                <div>Origen</div>
+                                <div>Destino</div>
+                                <div>Cliente</div>
+                                <div>Fecha</div>
+                            </div>
+                            
+                            <div class="table-row">
+                                <div>TCLU1234567</div>
+                                <div><span class="status-badge transit">En Tránsito</span></div>
+                                <div>Shanghai</div>
+                                <div>Manzanillo</div>
+                                <div>ABC Corp</div>
+                                <div>2025-10-20</div>
+                            </div>
+                            
+                            <div class="table-row">
+                                <div>MSCU9876543</div>
+                                <div><span class="status-badge port">En Puerto</span></div>
+                                <div>Los Angeles</div>
+                                <div>Guadalajara</div>
+                                <div>XYZ Ltd</div>
+                                <div>2025-10-22</div>
+                            </div>
+                            
+                            <div class="table-row">
+                                <div>COSCO555888</div>
+                                <div><span class="status-badge delivered">Entregado</span></div>
+                                <div>Hamburg</div>
+                                <div>México DF</div>
+                                <div>DEF SA</div>
+                                <div>2025-10-18</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateInstructionsModule(session) {
+            return `
+                <div class="module-container">
+                    <div class="module-header">
+                        <h2>📋 Cartas de Instrucción</h2>
+                        <button onclick="backToDashboard()" class="back-btn">← Volver al Dashboard</button>
+                    </div>
+                    
+                    <div class="module-content">
+                        <div class="action-buttons">
+                            <button class="primary-btn">📝 Nueva Carta de Instrucción</button>
+                            <button class="secondary-btn">📤 Plantillas</button>
+                            <button class="secondary-btn">📊 Reportes</button>
+                        </div>
+                        
+                        <div class="instructions-list">
+                            <div class="instruction-card">
+                                <div class="instruction-header">
+                                    <h3>Carta #2025-001</h3>
+                                    <span class="status-badge pending">Pendiente</span>
+                                </div>
+                                <div class="instruction-details">
+                                    <p><strong>Cliente:</strong> ABC Corporation</p>
+                                    <p><strong>Contenedor:</strong> TCLU1234567</p>
+                                    <p><strong>Fecha:</strong> 22 Oct 2025</p>
+                                    <p><strong>Documentos:</strong> 3 archivos adjuntos</p>
+                                </div>
+                                <div class="instruction-actions">
+                                    <button class="edit-btn">✏️ Editar</button>
+                                    <button class="view-btn">👁️ Ver</button>
+                                    <button class="send-btn">📧 Enviar</button>
+                                </div>
+                            </div>
+                            
+                            <div class="instruction-card">
+                                <div class="instruction-header">
+                                    <h3>Carta #2025-002</h3>
+                                    <span class="status-badge approved">Aprobada</span>
+                                </div>
+                                <div class="instruction-details">
+                                    <p><strong>Cliente:</strong> XYZ Limited</p>
+                                    <p><strong>Contenedor:</strong> MSCU9876543</p>
+                                    <p><strong>Fecha:</strong> 21 Oct 2025</p>
+                                    <p><strong>Documentos:</strong> 5 archivos adjuntos</p>
+                                </div>
+                                <div class="instruction-actions">
+                                    <button class="edit-btn">✏️ Editar</button>
+                                    <button class="view-btn">👁️ Ver</button>
+                                    <button class="download-btn">💾 Descargar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generatePaymentsModule(session) {
+            return `
+                <div class="module-container">
+                    <div class="module-header">
+                        <h2>💳 Gestión de Pagos</h2>
+                        <button onclick="backToDashboard()" class="back-btn">← Volver al Dashboard</button>
+                    </div>
+                    
+                    <div class="module-content">
+                        <div class="payment-types">
+                            <h3>Tipos de Pago Disponibles</h3>
+                            <div class="payment-grid">
+                                <div class="payment-type">🏦 Transferencia Bancaria</div>
+                                <div class="payment-type">💳 Tarjeta de Crédito</div>
+                                <div class="payment-type">💰 Efectivo</div>
+                                <div class="payment-type">📱 Pago Digital</div>
+                                <div class="payment-type">📋 Cheque</div>
+                                <div class="payment-type">🌐 PayPal</div>
+                                <div class="payment-type">🔄 Crédito</div>
+                                <div class="payment-type">📦 Contra Entrega</div>
+                                <div class="payment-type">🎫 Vale</div>
+                                <div class="payment-type">🤝 Compensación</div>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-payments">
+                            <h3>Pagos Recientes</h3>
+                            <div class="payments-table">
+                                <div class="table-header">
+                                    <div>ID Pago</div>
+                                    <div>Cliente</div>
+                                    <div>Monto</div>
+                                    <div>Tipo</div>
+                                    <div>Estado</div>
+                                    <div>Fecha</div>
+                                </div>
+                                
+                                <div class="table-row">
+                                    <div>PAY-001</div>
+                                    <div>ABC Corp</div>
+                                    <div>$25,000</div>
+                                    <div>Transferencia</div>
+                                    <div><span class="status-badge approved">Verificado</span></div>
+                                    <div>22/10/2025</div>
+                                </div>
+                                
+                                <div class="table-row">
+                                    <div>PAY-002</div>
+                                    <div>XYZ Ltd</div>
+                                    <div>$18,500</div>
+                                    <div>Tarjeta</div>
+                                    <div><span class="status-badge pending">Pendiente</span></div>
+                                    <div>21/10/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateClientsModule(session) {
+            return `
+                <div class="module-container">
+                    <div class="module-header">
+                        <h2>👥 Base de Clientes</h2>
+                        <button onclick="backToDashboard()" class="back-btn">← Volver al Dashboard</button>
+                    </div>
+                    
+                    <div class="module-content">
+                        <div class="client-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">248</div>
+                                <div class="stat-label">Clientes Activos</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">32</div>
+                                <div class="stat-label">Nuevos Este Mes</div>
+                            </div>
+                        </div>
+                        
+                        <div class="clients-grid">
+                            <div class="client-card">
+                                <div class="client-header">
+                                    <h3>ABC Corporation</h3>
+                                    <span class="client-status active">Activo</span>
+                                </div>
+                                <div class="client-info">
+                                    <p><strong>Email:</strong> contact@abc-corp.com</p>
+                                    <p><strong>Teléfono:</strong> +52 55 1234-5678</p>
+                                    <p><strong>Contenedores:</strong> 45 activos</p>
+                                    <p><strong>Último Movimiento:</strong> 22 Oct 2025</p>
+                                </div>
+                            </div>
+                            
+                            <div class="client-card">
+                                <div class="client-header">
+                                    <h3>XYZ Limited</h3>
+                                    <span class="client-status active">Activo</span>
+                                </div>
+                                <div class="client-info">
+                                    <p><strong>Email:</strong> info@xyz-ltd.com</p>
+                                    <p><strong>Teléfono:</strong> +52 33 9876-5432</p>
+                                    <p><strong>Contenedores:</strong> 28 activos</p>
+                                    <p><strong>Último Movimiento:</strong> 21 Oct 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateReportsModule(session) {
+            return `
+                <div class="module-container">
+                    <div class="module-header">
+                        <h2>📊 Reportes y Analytics</h2>
+                        <button onclick="backToDashboard()" class="back-btn">← Volver al Dashboard</button>
+                    </div>
+                    
+                    <div class="module-content">
+                        <div class="report-options">
+                            <button class="report-btn">📈 Reporte de Contenedores</button>
+                            <button class="report-btn">💰 Reporte Financiero</button>
+                            <button class="report-btn">👥 Reporte de Clientes</button>
+                            <button class="report-btn">📋 Reporte de Instrucciones</button>
+                            <button class="report-btn">🎯 Dashboard Ejecutivo</button>
+                            <button class="report-btn">📊 Analytics Avanzados</button>
+                        </div>
+                        
+                        <div class="kpi-dashboard">
+                            <h3>KPIs en Tiempo Real</h3>
+                            <div class="kpi-grid">
+                                <div class="kpi-card">
+                                    <div class="kpi-value">$2.5M</div>
+                                    <div class="kpi-label">Ingresos del Mes</div>
+                                    <div class="kpi-trend positive">↗ +15%</div>
+                                </div>
+                                <div class="kpi-card">
+                                    <div class="kpi-value">95%</div>
+                                    <div class="kpi-label">Entregas a Tiempo</div>
+                                    <div class="kpi-trend positive">↗ +2%</div>
+                                </div>
+                                <div class="kpi-card">
+                                    <div class="kpi-value">152</div>
+                                    <div class="kpi-label">Contenedores Activos</div>
+                                    <div class="kpi-trend neutral">→ 0%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateAdminModule(session) {
+            return `
+                <div class="module-container">
+                    <div class="module-header">
+                        <h2>⚙️ Panel de Administración</h2>
+                        <button onclick="backToDashboard()" class="back-btn">← Volver al Dashboard</button>
+                    </div>
+                    
+                    <div class="module-content">
+                        <div class="admin-sections">
+                            <div class="admin-card">
+                                <h3>👤 Gestión de Usuarios</h3>
+                                <p>Crear, editar y gestionar usuarios del sistema</p>
+                                <button class="admin-btn">Gestionar Usuarios</button>
+                            </div>
+                            
+                            <div class="admin-card">
+                                <h3>🔧 Configuración del Sistema</h3>
+                                <p>Ajustar parámetros y configuraciones</p>
+                                <button class="admin-btn">Configurar Sistema</button>
+                            </div>
+                            
+                            <div class="admin-card">
+                                <h3>📝 Logs de Actividad</h3>
+                                <p>Ver registros y auditorías del sistema</p>
+                                <button class="admin-btn">Ver Logs</button>
+                            </div>
+                            
+                            <div class="admin-card">
+                                <h3>💾 Respaldos</h3>
+                                <p>Gestionar copias de seguridad</p>
+                                <button class="admin-btn">Gestionar Backups</button>
+                            </div>
+                        </div>
+                        
+                        <div class="system-status">
+                            <h3>Estado del Sistema</h3>
+                            <div class="status-grid">
+                                <div class="status-item">
+                                    <span class="status-indicator online"></span>
+                                    <span>Base de Datos: Online</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-indicator online"></span>
+                                    <span>API Services: Online</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-indicator online"></span>
+                                    <span>Email Service: Online</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function backToDashboard() {
+            location.reload(); // Recargar para volver al dashboard principal
         }
 
         function logout() {
