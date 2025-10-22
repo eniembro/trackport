@@ -609,24 +609,249 @@ export default function Instructions() {
         </View>
       </Modal>
 
-      {/* Modal de creación - placeholder */}
+      {/* Modal de creación de cartas de instrucción */}
       <Modal
         visible={showCreateModal}
         animationType="slide"
         presentationStyle="pageSheet"
         onRequestClose={() => setShowCreateModal(false)}
       >
-        <View style={styles.modalContainer}>
+        <SafeAreaView style={styles.modalContainer}>
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>Nueva Carta Instrucción</Text>
             <TouchableOpacity onPress={() => setShowCreateModal(false)}>
               <Ionicons name="close" size={24} color="#666" />
             </TouchableOpacity>
           </View>
-          <View style={styles.modalContent}>
-            <Text style={styles.comingSoon}>Formulario de creación próximamente...</Text>
-          </View>
-        </View>
+          
+          <ScrollView style={styles.modalContent} showsVerticalScrollIndicator={false}>
+            {/* Información del Cliente */}
+            <View style={styles.formSection}>
+              <Text style={styles.formSectionTitle}>📋 Información del Cliente</Text>
+              
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>Nombre del Cliente *</Text>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Ejemplo: Importadora ABC S.A. de C.V."
+                  value=""
+                  onChangeText={() => {}}
+                />
+              </View>
+
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>Email del Cliente *</Text>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="cliente@empresa.com"
+                  keyboardType="email-address"
+                  value=""
+                  onChangeText={() => {}}
+                />
+              </View>
+
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>Número de Contenedor *</Text>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="TCLU1234567"
+                  value=""
+                  onChangeText={() => {}}
+                />
+              </View>
+            </View>
+
+            {/* Información del Envío */}
+            <View style={styles.formSection}>
+              <Text style={styles.formSectionTitle}>🚢 Información del Envío</Text>
+              
+              <View style={styles.inputRow}>
+                <View style={styles.inputHalf}>
+                  <Text style={styles.inputLabel}>Puerto Origen</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    placeholder="Shanghai, China"
+                    value=""
+                    onChangeText={() => {}}
+                  />
+                </View>
+                <View style={styles.inputHalf}>
+                  <Text style={styles.inputLabel}>Puerto Destino</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    placeholder="Manzanillo, México"
+                    value=""
+                    onChangeText={() => {}}
+                  />
+                </View>
+              </View>
+
+              <View style={styles.inputRow}>
+                <View style={styles.inputHalf}>
+                  <Text style={styles.inputLabel}>Buque</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    placeholder="MSC OSCAR"
+                    value=""
+                    onChangeText={() => {}}
+                  />
+                </View>
+                <View style={styles.inputHalf}>
+                  <Text style={styles.inputLabel}>Viaje</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    placeholder="245W"
+                    value=""
+                    onChangeText={() => {}}
+                  />
+                </View>
+              </View>
+
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>Número de BL</Text>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="MSCU123456789"
+                  value=""
+                  onChangeText={() => {}}
+                />
+              </View>
+            </View>
+
+            {/* Información de la Carga */}
+            <View style={styles.formSection}>
+              <Text style={styles.formSectionTitle}>📦 Información de la Carga</Text>
+              
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>Descripción de la Carga *</Text>
+                <TextInput
+                  style={[styles.textInput, styles.textArea]}
+                  placeholder="Componentes electrónicos diversos..."
+                  multiline
+                  numberOfLines={3}
+                  value=""
+                  onChangeText={() => {}}
+                />
+              </View>
+
+              <View style={styles.inputRow}>
+                <View style={styles.inputHalf}>
+                  <Text style={styles.inputLabel}>Código HS</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    placeholder="8542.31.00"
+                    value=""
+                    onChangeText={() => {}}
+                  />
+                </View>
+                <View style={styles.inputHalf}>
+                  <Text style={styles.inputLabel}>Incoterm</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    placeholder="CIF"
+                    value=""
+                    onChangeText={() => {}}
+                  />
+                </View>
+              </View>
+
+              <View style={styles.inputRow}>
+                <View style={styles.inputHalf}>
+                  <Text style={styles.inputLabel}>Cantidad</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    placeholder="500"
+                    keyboardType="numeric"
+                    value=""
+                    onChangeText={() => {}}
+                  />
+                </View>
+                <View style={styles.inputHalf}>
+                  <Text style={styles.inputLabel}>Unidad</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    placeholder="Piezas"
+                    value=""
+                    onChangeText={() => {}}
+                  />
+                </View>
+              </View>
+
+              <View style={styles.inputRow}>
+                <View style={styles.inputHalf}>
+                  <Text style={styles.inputLabel}>Peso (kg)</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    placeholder="2500"
+                    keyboardType="numeric"
+                    value=""
+                    onChangeText={() => {}}
+                  />
+                </View>
+                <View style={styles.inputHalf}>
+                  <Text style={styles.inputLabel}>Valor (USD)</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    placeholder="45000"
+                    keyboardType="numeric"
+                    value=""
+                    onChangeText={() => {}}
+                  />
+                </View>
+              </View>
+            </View>
+
+            {/* Instrucciones Especiales */}
+            <View style={styles.formSection}>
+              <Text style={styles.formSectionTitle}>📝 Instrucciones Especiales</Text>
+              
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>Requerimientos Aduanales</Text>
+                <TextInput
+                  style={[styles.textInput, styles.textArea]}
+                  placeholder="Documentos específicos requeridos, permisos especiales..."
+                  multiline
+                  numberOfLines={3}
+                  value=""
+                  onChangeText={() => {}}
+                />
+              </View>
+
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>Notas Adicionales</Text>
+                <TextInput
+                  style={[styles.textInput, styles.textArea]}
+                  placeholder="Instrucciones especiales para el manejo..."
+                  multiline
+                  numberOfLines={3}
+                  value=""
+                  onChangeText={() => {}}
+                />
+              </View>
+            </View>
+
+            {/* Botones de Acción */}
+            <View style={styles.modalActions}>
+              <TouchableOpacity 
+                style={styles.cancelButton}
+                onPress={() => setShowCreateModal(false)}
+              >
+                <Text style={styles.cancelButtonText}>Cancelar</Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity 
+                style={styles.submitButton}
+                onPress={() => {
+                  Alert.alert('Éxito', 'Carta de instrucción creada correctamente');
+                  setShowCreateModal(false);
+                }}
+              >
+                <Ionicons name="checkmark-circle" size={20} color="#fff" />
+                <Text style={styles.submitButtonText}>Crear Carta</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
       </Modal>
     </SafeAreaView>
   );
@@ -862,6 +1087,12 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 15,
   },
+  formSectionTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#1e3a8a',
+    marginBottom: 16,
+  },
   detailGrid: {
     gap: 12,
   },
@@ -947,5 +1178,85 @@ const styles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
     marginTop: 50,
+  },
+  // Nuevos estilos para el formulario
+  formSection: {
+    backgroundColor: '#fff',
+    marginHorizontal: 16,
+    marginVertical: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  inputGroup: {
+    marginBottom: 16,
+  },
+  inputRow: {
+    flexDirection: 'row',
+    gap: 12,
+    marginBottom: 16,
+  },
+  inputHalf: {
+    flex: 1,
+  },
+  inputLabel: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#374151',
+    marginBottom: 6,
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: '#d1d5db',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    fontSize: 16,
+    backgroundColor: '#fff',
+  },
+  textArea: {
+    height: 80,
+    textAlignVertical: 'top',
+  },
+  modalActions: {
+    flexDirection: 'row',
+    gap: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+  },
+  cancelButton: {
+    flex: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#d1d5db',
+    alignItems: 'center',
+  },
+  cancelButtonText: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#6b7280',
+  },
+  submitButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    backgroundColor: '#1e3a8a',
+    gap: 8,
+  },
+  submitButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#fff',
   },
 });

@@ -28,27 +28,14 @@ export default function Login() {
 
     setLoading(true);
     try {
+      console.log('Initiating login for:', email);
       await login(email, password);
-    } catch (error) {
-      Alert.alert('Error', 'Credenciales inválidas');
+      console.log('Login completed successfully');
+    } catch (error: any) {
+      console.error('Login failed:', error);
+      Alert.alert('Error de Autenticación', error.message || 'Credenciales inválidas');
     } finally {
       setLoading(false);
-    }
-  };
-
-  const fillDemoCredentials = (role: string) => {
-    const credentials: { [key: string]: { email: string; password: string } } = {
-      admin: { email: 'admin@track-port.com', password: '123456' },
-      client: { email: 'cliente@track-port.com', password: '123456' },
-      service: { email: 'servicio@track-port.com', password: '123456' },
-      customs: { email: 'agente@track-port.com', password: '123456' },
-      sales: { email: 'ventas@track-port.com', password: '123456' },
-    };
-    
-    const cred = credentials[role];
-    if (cred) {
-      setEmail(cred.email);
-      setPassword(cred.password);
     }
   };
 
@@ -92,41 +79,11 @@ export default function Login() {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.demoContainer}>
-          <Text style={styles.demoTitle}>Usuarios Demo:</Text>
-          <View style={styles.demoButtons}>
-            <TouchableOpacity 
-              style={styles.demoButton} 
-              onPress={() => fillDemoCredentials('admin')}
-            >
-              <Text style={styles.demoButtonText}>Admin</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-              style={styles.demoButton} 
-              onPress={() => fillDemoCredentials('client')}
-            >
-              <Text style={styles.demoButtonText}>Cliente</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-              style={styles.demoButton} 
-              onPress={() => fillDemoCredentials('service')}
-            >
-              <Text style={styles.demoButtonText}>Servicio</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-              style={styles.demoButton} 
-              onPress={() => fillDemoCredentials('customs')}
-            >
-              <Text style={styles.demoButtonText}>Agente</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-              style={styles.demoButton} 
-              onPress={() => fillDemoCredentials('sales')}
-            >
-              <Text style={styles.demoButtonText}>Ventas</Text>
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.demoNote}>Contraseña para todos: 123456</Text>
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoTitle}>TrackPort v1.0.0</Text>
+          <Text style={styles.infoText}>
+            Sistema de Gestión de Contenedores y Trámites Aduanales
+          </Text>
         </View>
 
         <Footer variant="minimal" />
@@ -244,5 +201,28 @@ const styles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
     fontStyle: 'italic',
+  },
+  infoContainer: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    alignItems: 'center',
+  },
+  infoTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#1e3a8a',
+    marginBottom: 8,
+  },
+  infoText: {
+    fontSize: 14,
+    color: '#666',
+    textAlign: 'center',
+    lineHeight: 20,
   },
 });

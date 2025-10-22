@@ -23,54 +23,41 @@ export const useAuth = () => {
   return context;
 };
 
-// Mock users for development (fallback)
-const MOCK_USERS: User[] = [
-  {
-    id: '11111111-1111-1111-1111-111111111111',
-    email: 'admin@track-port.com',
-    name: 'Administrador Principal',
-    role: 'main_admin',
-    phone: '+52 (33) 1234-5678',
-    isActive: true,
-    createdAt: new Date().toISOString(),
+// Storage helper for web compatibility
+const storage = {
+  async getItem(key: string): Promise<string | null> {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem(key);
+    }
+    try {
+      return await AsyncStorage.getItem(key);
+    } catch {
+      return null;
+    }
   },
-  {
-    id: '55555555-5555-5555-5555-555555555555',
-    email: 'cliente@track-port.com',
-    name: 'Cliente Demo',
-    role: 'client',
-    phone: '+52 (33) 1234-5679',
-    isActive: true,
-    createdAt: new Date().toISOString(),
+  async setItem(key: string, value: string): Promise<void> {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(key, value);
+      return;
+    }
+    try {
+      await AsyncStorage.setItem(key, value);
+    } catch {
+      // Ignore errors
+    }
   },
-  {
-    id: '22222222-2222-2222-2222-222222222222',
-    email: 'servicio@track-port.com',
-    name: 'Servicio al Cliente',
-    role: 'customer_service',
-    phone: '+52 (33) 1234-5680',
-    isActive: true,
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: '33333333-3333-3333-3333-333333333333',
-    email: 'agente@track-port.com',
-    name: 'Agente Aduanal',
-    role: 'customs_broker',
-    phone: '+52 (33) 1234-5681',
-    isActive: true,
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: '44444444-4444-4444-4444-444444444444',
-    email: 'ventas@track-port.com',
-    name: 'Equipo de Ventas',
-    role: 'sales',
-    phone: '+52 (33) 1234-5682',
-    isActive: true,
-    createdAt: new Date().toISOString(),
-  },
-];
+  async removeItem(key: string): Promise<void> {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(key);
+      return;
+    }
+    try {
+      await AsyncStorage.removeItem(key);
+    } catch {
+      // Ignore errors
+    }
+  }
+};
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -151,7 +138,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       };
 
       setUser(userProfile);
-      await AsyncStorage.setItem('@trackport_user', JSON.stringify(userProfile));
+      
+      // Guardar en storage apropiado según la plataforma
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('@trackport_user', JSON.stringify(userProfile));
+      } else {
+        await AsyncStorage.setItem('@trackport_user', JSON.stringify(userProfile));
+      }
     } catch (error) {
       console.error('Error loading user profile:', error);
     }
@@ -159,7 +152,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const checkStoredAuth = async () => {
     try {
-      const storedUser = await AsyncStorage.getItem('@trackport_user');
+      let storedUser;
+      if (typeof window !== 'undefined') {
+        storedUser = localStorage.getItem('@trackport_user');
+      } else {
+        storedUser = await AsyncStorage.getItem('@trackport_user');
+      }
+      
       if (storedUser) {
         setUser(JSON.parse(storedUser));
       }
@@ -170,29 +169,55 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const login = async (email: string, password: string) => {
     setLoading(true);
+    console.log('Starting login process for:', email);
+    
     try {
       // Intentar login con Supabase
+      console.log('Attempting Supabase authentication...');
       const { data, error } = await auth.signIn(email, password);
       
       if (error) {
-        // Fallback a autenticación mock para desarrollo
-        console.log('Supabase login failed, using mock auth:', error.message);
-        const foundUser = MOCK_USERS.find(u => u.email === email);
-        if (foundUser && password === '123456') {
-          await AsyncStorage.setItem('@trackport_user', JSON.stringify(foundUser));
-          setUser(foundUser);
-        } else {
-          throw new Error('Credenciales inválidas');
-        }
+        console.log('Supabase login failed:', error.message);
+        throw new Error(`Error de autenticación: ${error.message}`);
       } else if (data.user) {
+        console.log('Supabase login successful, user ID:', data.user.id);
         setSupabaseUser(data.user);
-        await loadUserProfile(data.user.id);
+        
+        try {
+          await loadUserProfile(data.user.id);
+          console.log('User profile loaded successfully');
+        } catch (profileError) {
+          console.error('Failed to load user profile:', profileError);
+          // Si falla cargar el perfil, usar datos básicos del auth
+          const basicUser: User = {
+            id: data.user.id,
+            email: data.user.email || email,
+            name: data.user.user_metadata?.name || 'Usuario',
+            role: 'client',
+            phone: '',
+            isActive: true,
+            createdAt: new Date().toISOString(),
+          };
+          setUser(basicUser);
+          
+          // Guardar en storage local para web
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('@trackport_user', JSON.stringify(basicUser));
+          } else {
+            await AsyncStorage.setItem('@trackport_user', JSON.stringify(basicUser));
+          }
+          console.log('Using basic user profile as fallback');
+        }
+      } else {
+        console.log('No user data returned from Supabase');
+        throw new Error('Error al iniciar sesión - sin datos de usuario');
       }
     } catch (error: any) {
       console.error('Login error:', error);
       throw new Error(error.message || 'Error al iniciar sesión');
     } finally {
       setLoading(false);
+      console.log('Login process completed');
     }
   };
 
@@ -232,7 +257,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
       
       // Limpiar estado local
-      await AsyncStorage.removeItem('@trackport_user');
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('@trackport_user');
+      } else {
+        await AsyncStorage.removeItem('@trackport_user');
+      }
       setUser(null);
       setSupabaseUser(null);
     } catch (error) {

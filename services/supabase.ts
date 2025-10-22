@@ -2,8 +2,8 @@ import { createClient } from '@supabase/supabase-js';
 import { APP_CONFIG } from '../utils/config';
 
 // Configuración de Supabase
-const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL || 'https://your-project.supabase.co';
-const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || 'your-anon-key';
+const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL || 'https://aereiuyggnzlmhqdqvlo.supabase.co';
+const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFlcmVpdXlnZ256bG1ocWRxdmxvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk3NjA0OTQsImV4cCI6MjA3NTMzNjQ5NH0.mxt81o_4Hw_M7ldri-UENyQdjqJL-zmRWNjesTdFqqQ';
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
