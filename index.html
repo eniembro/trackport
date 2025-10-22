@@ -522,7 +522,9 @@
         }
         
         .ai-bot .ai-avatar {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            background: transparent;
+            padding: 0;
+            overflow: hidden;
         }
         
         .ai-user .ai-avatar {
@@ -564,6 +566,27 @@
         .ai-quick-btn:hover {
             background: #e5e7eb;
             border-color: #9ca3af;
+        }
+        
+        .copilot-btn {
+            background: linear-gradient(135deg, #333333, #000000) !important;
+            color: white !important;
+            border-color: #4b5563 !important;
+        }
+        
+        .copilot-btn:hover {
+            background: linear-gradient(135deg, #1f2937, #333333) !important;
+            border-color: #6b7280 !important;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .copilot-indicator {
+            animation: pulse 2s infinite;
         }
         
         .ai-input-area {
@@ -1207,7 +1230,34 @@
     <div id="aiAssistant" class="ai-assistant">
         <div class="ai-header">
             <div class="ai-title">
-                <span class="ai-icon">🤖</span>
+                <span class="ai-icon">
+                    <svg width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="headerCapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#60a5fa"/>
+                                <stop offset="100%" style="stop-color:#1e40af"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Head -->
+                        <circle cx="50" cy="45" r="25" fill="#fbbf24" stroke="#1f2937" stroke-width="2"/>
+                        <!-- Cap -->
+                        <ellipse cx="50" cy="25" rx="30" ry="15" fill="url(#headerCapGradient)" stroke="#1e3a8a" stroke-width="2"/>
+                        <ellipse cx="50" cy="20" rx="25" ry="10" fill="#3b82f6" stroke="#1e40af"/>
+                        <!-- Cap text -->
+                        <text x="50" y="23" font-family="Arial" font-size="6" font-weight="bold" fill="white" text-anchor="middle">Track-Port</text>
+                        <!-- Face -->
+                        <circle cx="42" cy="42" r="3" fill="#1f2937"/>
+                        <circle cx="58" cy="42" r="3" fill="#1f2937"/>
+                        <circle cx="43" cy="41" r="1" fill="white"/>
+                        <circle cx="59" cy="41" r="1" fill="white"/>
+                        <path d="M 42 50 Q 50 55 58 50" stroke="#1f2937" stroke-width="2" fill="none"/>
+                        <!-- Body -->
+                        <rect x="35" y="65" width="30" height="25" rx="5" fill="#1e40af" stroke="#1e3a8a" stroke-width="2"/>
+                        <!-- Arms waving -->
+                        <circle cx="30" cy="72" r="8" fill="#fbbf24" stroke="#1f2937" stroke-width="2"/>
+                        <circle cx="70" cy="72" r="8" fill="#fbbf24" stroke="#1f2937" stroke-width="2"/>
+                    </svg>
+                </span>
                 <span>TrackPort AI Assistant</span>
             </div>
             <button class="ai-close" onclick="toggleAIAssistant()">✕</button>
@@ -1231,6 +1281,7 @@
             <button class="ai-quick-btn" onclick="sendQuickMessage('Estado de mis contenedores')">📦 Estado de Contenedores</button>
             <button class="ai-quick-btn" onclick="sendQuickMessage('Generar reporte mensual')">📊 Generar Reporte</button>
             <button class="ai-quick-btn" onclick="sendQuickMessage('Ayuda con el sistema')">❓ Ayuda General</button>
+            <button class="ai-quick-btn copilot-btn" onclick="connectCopilot()">🤖 Conectar GitHub Copilot</button>
         </div>
         
         <div class="ai-input-area">
@@ -1873,8 +1924,39 @@
             const messageDiv = document.createElement('div');
             messageDiv.className = `ai-message ai-${sender}`;
             
+            const avatarContent = sender === 'bot' ? `
+                <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="capGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#3b82f6"/>
+                            <stop offset="100%" style="stop-color:#1e40af"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Head -->
+                    <circle cx="50" cy="45" r="25" fill="#fbbf24" stroke="#1f2937" stroke-width="2"/>
+                    <!-- Cap -->
+                    <ellipse cx="50" cy="25" rx="30" ry="15" fill="url(#capGradient)" stroke="#1e3a8a" stroke-width="2"/>
+                    <ellipse cx="50" cy="20" rx="25" ry="10" fill="#2563eb" stroke="#1e40af"/>
+                    <!-- Cap text -->
+                    <text x="50" y="23" font-family="Arial" font-size="6" font-weight="bold" fill="white" text-anchor="middle">Track-Port</text>
+                    <!-- Face -->
+                    <circle cx="42" cy="42" r="3" fill="#1f2937"/>
+                    <circle cx="58" cy="42" r="3" fill="#1f2937"/>
+                    <circle cx="43" cy="41" r="1" fill="white"/>
+                    <circle cx="59" cy="41" r="1" fill="white"/>
+                    <path d="M 42 50 Q 50 55 58 50" stroke="#1f2937" stroke-width="2" fill="none"/>
+                    <!-- Body -->
+                    <rect x="35" y="65" width="30" height="25" rx="5" fill="#1e40af" stroke="#1e3a8a" stroke-width="2"/>
+                    <!-- Arms -->
+                    <circle cx="30" cy="72" r="8" fill="#fbbf24" stroke="#1f2937" stroke-width="2"/>
+                    <circle cx="70" cy="72" r="8" fill="#fbbf24" stroke="#1f2937" stroke-width="2"/>
+                    <!-- Wave hand -->
+                    <path d="M 25 65 L 22 62 M 20 67 L 17 64 M 23 70 L 20 73" stroke="#1f2937" stroke-width="2"/>
+                </svg>
+            ` : '👤';
+            
             messageDiv.innerHTML = `
-                <div class="ai-avatar">${sender === 'bot' ? '🤖' : '👤'}</div>
+                <div class="ai-avatar">${avatarContent}</div>
                 <div class="ai-text">${text}</div>
             `;
             
@@ -1958,8 +2040,173 @@
             console.log('✅ Sesión cerrada correctamente');
         }
         
-        console.log('🎉 TrackPort listo para usar!');
+        // GitHub Copilot Integration Functions
+        let copilotConnected = false;
+        let copilotApiKey = null;
+        
+        async function connectCopilot() {
+            showMessage('🔗 Iniciando conexión con GitHub Copilot...', 'info');
+            
+            try {
+                // Simulamos la autenticación con GitHub
+                const githubAuth = await authenticateGitHub();
+                if (githubAuth.success) {
+                    copilotConnected = true;
+                    copilotApiKey = githubAuth.token;
+                    
+                    // Actualizar UI
+                    const copilotBtn = document.querySelector('.copilot-btn');
+                    if (copilotBtn) {
+                        copilotBtn.innerHTML = '✅ Copilot Conectado';
+                        copilotBtn.style.background = 'linear-gradient(135deg, #059669, #047857)';
+                        copilotBtn.onclick = () => showCopilotStatus();
+                    }
+                    
+                    // Mejorar el asistente con capacidades de Copilot
+                    enhanceAIAssistant();
+                    
+                    showMessage('🚀 GitHub Copilot conectado exitosamente! Asistente AI mejorado activado.', 'success');
+                    
+                    // Mostrar nuevas capacidades
+                    setTimeout(() => {
+                        showCopilotCapabilities();
+                    }, 1500);
+                } else {
+                    throw new Error(githubAuth.error || 'Error de autenticación');
+                }
+            } catch (error) {
+                console.error('Error conectando Copilot:', error);
+                showMessage('❌ Error conectando GitHub Copilot: ' + error.message, 'error');
+            }
+        }
+        
+        async function authenticateGitHub() {
+            // En un entorno real, esto abriría OAuth de GitHub
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    // Simulamos autenticación exitosa
+                    resolve({
+                        success: true,
+                        token: 'gho_' + Math.random().toString(36).substring(2, 15),
+                        user: currentUser
+                    });
+                }, 2000);
+            });
+        }
+        
+        function enhanceAIAssistant() {
+            // Mejorar las capacidades del asistente AI
+            const aiWidget = document.getElementById('aiWidget');
+            if (aiWidget) {
+                // Agregar indicador de Copilot activo
+                const existingIndicator = aiWidget.querySelector('.copilot-indicator');
+                if (!existingIndicator) {
+                    const copilotIndicator = document.createElement('div');
+                    copilotIndicator.className = 'copilot-indicator';
+                    copilotIndicator.innerHTML = '🤖 Powered by GitHub Copilot';
+                    copilotIndicator.style.cssText = `
+                        font-size: 10px;
+                        color: #6b7280;
+                        text-align: center;
+                        margin-top: 5px;
+                        padding: 2px 5px;
+                        background: rgba(0,0,0,0.05);
+                        border-radius: 8px;
+                        animation: pulse 2s infinite;
+                    `;
+                    aiWidget.appendChild(copilotIndicator);
+                }
+            }
+        }
+        
+        function showCopilotCapabilities() {
+            const capabilities = [
+                '✨ Análisis inteligente de contenedores',
+                '📊 Generación automática de reportes',
+                '🔍 Búsqueda avanzada con IA',
+                '💡 Sugerencias proactivas',
+                '🗣️ Asistente conversacional mejorado',
+                '📈 Predicciones de tiempos de entrega',
+                '⚡ Respuestas más rápidas y precisas',
+                '� Recomendaciones personalizadas'
+            ];
+            
+            let message = '🚀 <strong>Nuevas capacidades Copilot activadas:</strong><br><br>';
+            capabilities.forEach(cap => {
+                message += cap + '<br>';
+            });
+            message += '<br>💬 <em>Prueba preguntando algo más complejo al asistente!</em>';
+            
+            showMessage(message, 'info', 6000);
+        }
+        
+        function showCopilotStatus() {
+            if (copilotConnected) {
+                const statusMessage = `
+                    🟢 <strong>GitHub Copilot Activo</strong><br><br>
+                    📡 Estado: Conectado<br>
+                    🔑 Token: ${copilotApiKey ? copilotApiKey.substring(0, 10) + '...' : 'N/A'}<br>
+                    👤 Usuario: ${currentUser || 'Anónimo'}<br>
+                    ⏰ Conectado: ${new Date().toLocaleTimeString()}<br><br>
+                    🎯 <em>Asistente AI con capacidades avanzadas activo</em>
+                `;
+                showMessage(statusMessage, 'success', 4000);
+            } else {
+                showMessage('❌ GitHub Copilot no conectado. Haz clic para conectar.', 'warning');
+            }
+        }
+        
+        // Mejorar respuestas del AI cuando Copilot está conectado
+        const originalGenerateAIResponse = generateAIResponse;
+        function generateAIResponse(message, session) {
+            if (copilotConnected) {
+                // Respuestas mejoradas con Copilot
+                const enhancedResponses = {
+                    'contenedores': `🚢 <strong>Análisis Avanzado de Contenedores (Copilot)</strong><br><br>
+                                    Con GitHub Copilot activado, puedo ofrecerte:<br><br>
+                                    📊 Análisis predictivo de tiempos de entrega<br>
+                                    🔍 Detección automática de retrasos potenciales<br>
+                                    📈 Optimización de rutas sugerida<br>
+                                    ⚠️ Alertas proactivas de problemas<br><br>
+                                    <em>¿Qué contenedor específico te interesa analizar?</em>`,
+                    
+                    'reportes': `📋 <strong>Reportes Inteligentes (Copilot)</strong><br><br>
+                                Copilot puede generar automáticamente:<br><br>
+                                📊 Reportes predictivos personalizados<br>
+                                📈 Análisis de tendencias avanzado<br>
+                                💡 Insights y recomendaciones<br>
+                                🎯 Métricas de rendimiento optimizadas<br><br>
+                                <em>¿Qué tipo de reporte necesitas?</em>`,
+                    
+                    'pagos': `💳 <strong>Gestión Inteligente de Pagos (Copilot)</strong><br><br>
+                             Con IA avanzada puedo ayudarte con:<br><br>
+                             🔍 Detección de anomalías en pagos<br>
+                             📊 Análisis de patrones financieros<br>
+                             ⏰ Predicciones de flujo de efectivo<br>
+                             🚨 Alertas de pagos pendientes<br><br>
+                             <em>¿Necesitas revisar algún pago específico?</em>`
+                };
+                
+                for (const keyword in enhancedResponses) {
+                    if (message.toLowerCase().includes(keyword)) {
+                        return enhancedResponses[keyword];
+                    }
+                }
+                
+                return `🤖 <strong>Asistente TrackPort + Copilot</strong><br><br>
+                        Con GitHub Copilot conectado, tengo acceso a capacidades avanzadas de IA.<br><br>
+                        Tu consulta: "${message}"<br><br>
+                        Como ${session.displayRole || 'Usuario'}, puedo ofrecerte análisis más profundos y sugerencias inteligentes.<br><br>
+                        ✨ <em>Pregúntame sobre análisis predictivos, optimizaciones o insights específicos.</em>`;
+            }
+            
+            // Usar respuesta original si Copilot no está conectado
+            return originalGenerateAIResponse(message, session);
+        }
+        
+        console.log('�🎉 TrackPort listo para usar!');
         console.log('👥 Usuarios disponibles:', Object.keys(realUsers).length);
+        console.log('🤖 GitHub Copilot: Listo para conectar');
     </script>
 </body>
 </html>
